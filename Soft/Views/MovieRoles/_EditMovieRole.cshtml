@@ -1,0 +1,17 @@
+﻿@using Mvc.Core.Editors
+@using Mvc.Core;
+@using Mvc.Domain
+@model Mvc.Facade.MovieRoleView
+
+@{
+	var movies = await Services.Get<IMoviesRepo>()?.GetAsync()! ?? [];
+	var persons = await Services.Get<IGroupsRepo>()?.GetAsync()! ?? [];
+	var selectMovies = new SelectList(movies, "Id", "Title", Model.MovieId);
+	var selectPersons = new SelectList(persons, "Id", "Name", Model.PersonNameId);
+}
+
+@Html.SelectFor(x => x.MovieId, selectMovies)
+@Html.SelectFor(x => x.PersonNameId, selectPersons)
+@Html.InputForEnum(x => x.Role)
+@Html.InputFor(x => x.IsCredited)
+@Html.InputFor(x => x.Text)

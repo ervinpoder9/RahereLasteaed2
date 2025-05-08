@@ -1,0 +1,7 @@
+﻿@using Mvc.Facade
+@using Mvc.Core.Editors
+@model IEnumerable<GroupView>
+
+<h3>Related Persons</h3>
+
+@Html.RelatedTable(Model, nameof(GroupView.Name))

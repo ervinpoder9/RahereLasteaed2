@@ -1,0 +1,14 @@
+﻿@using Mvc.Core.Editors
+@model IEnumerable<Mvc.Facade.MovieRoleView>
+
+@{
+	Layout = "_Index";
+	var propsToShow = new[] { 
+		nameof(Mvc.Facade.MovieRoleView.MovieId), 
+		nameof(Mvc.Facade.MovieRoleView.PersonNameId), 
+		nameof(Mvc.Facade.MovieRoleView.Role), 
+		nameof(Mvc.Facade.MovieRoleView.IsCredited), 
+		nameof(Mvc.Facade.MovieRoleView.Text) };
+}
+
+@Html.ShowTable(Model, propsToShow)

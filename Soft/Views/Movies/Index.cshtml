@@ -1,0 +1,23 @@
+﻿@using Mvc.Core
+@using Mvc.Core.Editors
+@using Mvc.Domain
+@using Mvc.Facade
+@model IEnumerable<Mvc.Facade.MovieView>
+
+@{
+	Layout = "_Index";
+	async Task<IEnumerable<GroupView>> relatedRoles() {
+		var id = ViewBag.SelectedId;
+		var movie = await Services.Get<IMoviesRepo>()?.GetAsync(id) as Movie;
+		if (movie != null)
+			await movie.LoadLazy();
+		var roles = movie?.Roles?.Where(x => x is not null);
+		return roles?.Select(x => new GroupViewFactory().CreateView(x!.data)) ?? [];
+	}
+}
+
+@Html.ShowTable(Model, true)
+
+@if (ViewBag.SelectedId != null) {
+	@await Html.PartialAsync("_RelatedRoles", await relatedRoles())
+}
