@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Kindergarten</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -47,11 +47,21 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - Soft - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+	<footer class="footer text-muted border-top">
+		<div class="container text-center">
+			<div class="py-2">
+				📍 <a href="https://maps.app.goo.gl/rEzTsv8DpvnHoH7cA" target="_blank">123 Random Place</a>
+			</div>
+			<div class="py-2">
+				📞 <a href="tel:+12312345678">+123 1234-5678</a> | 
+				✉ <a href="mailto:info@kindergarten.com">info@kindergarten.com</a>
+			</div>
+			<div class="py-2">
+				&copy; 2025 - Kindergarten | 
+				<a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
+			</div>
+		</div>
+	</footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
