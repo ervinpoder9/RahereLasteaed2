@@ -10,4 +10,5 @@ public class ApplicationDbContext : IdentityDbContext {
     public DbSet<MovieRoleData> MovieRoles { get; set; } = default!;
     public DbSet<GroupData> Groups { get; set; } = default!;
     public DbSet<TestingData> Tests { get; set; } = default!;
+    public DbSet<MenuData> Menus { get; set; } = default!;
 }
