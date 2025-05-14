@@ -4,18 +4,20 @@
     Layout = "_Layout";
 }
 
-<h1>Details</h1>
+<div class="format-box">
+	<h1>Details</h1>
 
-<div>
-    <h4>@title</h4>
-    <hr />
+	<div>
+	    <h4>@title</h4>
+	    <hr />
 
-    <dl class="row">
-	    @RenderBody()
-    </dl>
+	    <dl class="row">
+		    @RenderBody()
+	    </dl>
 
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+	</div>
+	<div>
+		<a asp-action="Edit" class="btn btn-hover" asp-route-id="@Model?.Id">Edit</a> |
+		<a asp-action="Index" class="btn btn-hover">Back to List</a>
+	</div>
 </div>
