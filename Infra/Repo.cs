@@ -13,6 +13,8 @@ public sealed class GroupsRepo(DbContext db)
     : Repo<Group, GroupData>(db, d => new(d)), IGroupsRepo { }
 public sealed class TestingRepo(DbContext db)
     : Repo<Testing, TestingData>(db, d => new(d)), ITestingRepo { }
+public sealed class RegistrationRepo(DbContext db)
+    : Repo<Registration, RegistrationData>(db, d => new(d)), IRegistrationsRepo {}
 
 public class Repo<TObject, TData>(DbContext c, Func<TData?, TObject> f)
     : IRepo<TObject> where TObject : Entity<TData> where TData : EntityData<TData> {
@@ -20,12 +22,13 @@ public class Repo<TObject, TData>(DbContext c, Func<TData?, TObject> f)
     private readonly DbSet<TData> set = c.Set<TData>();
     private static bool isAsc(string s) => !s.EndsWith("_desc");
     private static string propName(string s) => s.Replace("_desc", "");
+    private ParsingConfig config = new ParsingConfig { AllowEqualsAndToStringMethodsOnObject = true };
     private IQueryable<TData> ordered(string? orderBy = null, string? filter = null)
         => (orderBy is null) ? filtered(filter) : isAsc(orderBy)
             ? filtered(filter).OrderBy(propName(orderBy))
             : filtered(filter).OrderBy(propName(orderBy) + " descending");
     private IQueryable<TData> filtered(string? filter = null)
-        => (filter is null) ? set : set.Where(whereExpr(), filter);
+        => (filter is null) ? set : set.Where(config, whereExpr(), filter);
     private IQueryable<TData> filtered(string propertyName, int idValue)
         => set.Where(whereExpr(propertyName), idValue);
     private string whereExpr(string propertyName) {

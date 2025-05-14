@@ -9,5 +9,6 @@ public class ApplicationDbContext : IdentityDbContext {
     public DbSet<MovieData> Movies { get; set; } = default!;
     public DbSet<MovieRoleData> MovieRoles { get; set; } = default!;
     public DbSet<GroupData> Groups { get; set; } = default!;
+    public DbSet<RegistrationData> Registrations { get; set; } = default!;
     public DbSet<TestingData> Tests { get; set; } = default!;
 }
