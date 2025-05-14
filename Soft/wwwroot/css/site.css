@@ -67,7 +67,9 @@ main {
 .format-box {
     background: #f1f1f1;
     color: #222;
-    max-width: 2000px;
+    min-width: 500px;
+    max-width: 3000px;
+    width: fit-content;
     margin: 50px auto;
     padding: 30px 30px;
     border-radius: 12px;
@@ -96,6 +98,8 @@ main {
     border-collapse: separate;
     border-spacing: 0;
     border: 2px solid #9a9a9a;
+    min-width: 1000px;
+    min-height: 300px;
     overflow: hidden;
 }
 
