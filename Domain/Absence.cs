@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Mvc.Core;
+using Mvc.Data;
 
-public class Absence
-{
-	public Absence()
-	{
-	}
+namespace Mvc.Domain;
+
+public class Absence(AbsenceData? d) : Entity<AbsenceData>(d) {
+
 }

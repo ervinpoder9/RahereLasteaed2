@@ -1,0 +1,11 @@
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
+
+namespace Mvc.Facade;
+
+[DisplayName("Puudumine")]
+public sealed class AbsenceView : EntityView {
+
+}
+
