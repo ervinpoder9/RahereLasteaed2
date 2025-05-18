@@ -1,7 +1,6 @@
 ﻿namespace Mvc.Domain;
 
-public class AllCategories
+public class AllCategories : Entity
 {
-    public int Id { get; set; }
     public string? CategoryName { get; set; }
 }

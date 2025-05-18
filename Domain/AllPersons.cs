@@ -2,9 +2,8 @@
 
 namespace Mvc.Domain;
 
-public class AllPersons
+public class AllPersons : Entity
 {
-    public int Id { get; set; }
     // Eesnimi
     [Required(ErrorMessage = "name is required.")]
     [MinLength(2, ErrorMessage = "name must be at least 2 characters long.")]

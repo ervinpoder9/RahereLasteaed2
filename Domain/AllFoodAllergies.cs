@@ -1,7 +1,6 @@
 ﻿namespace Mvc.Domain;
 
-public class AllFoodAllergies
-{
-    public int Id { get; set; }
+public class AllFoodAllergies : Entity
+{   
     public string? AllergyName { get; set; }    
 }
