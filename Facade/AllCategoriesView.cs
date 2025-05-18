@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mvc.Facade
+namespace Mvc.Facade;
+
+[DisplayName("All Categories")] public sealed class AllCategoriesView : EntityView
 {
-    internal class AllCategoriesView
-    {
-    }
+    public string? CategoryName { get; set; }
 }
