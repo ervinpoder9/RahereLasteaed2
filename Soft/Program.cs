@@ -4,6 +4,7 @@ using Mvc.Core;
 using Mvc.Domain;
 using Mvc.Infra;
 using Mvc.Soft.Data;
+using Mvc.Soft.Models;
 
 internal class Program {
     private static void Main(string[] args) {
@@ -25,6 +26,14 @@ internal class Program {
 
         Services.init(builder.Services);
         var app = builder.Build();
+
+        using (var scope = app.Services.CreateScope())
+        {
+            var services = scope.ServiceProvider;
+
+            SeedDataAllCategories.Initialize(services);
+            SeedDataAllFoodAllergies.Initialize(services);
+        }
 
         if (app.Environment.IsDevelopment()) {
             app.UseMigrationsEndPoint();
