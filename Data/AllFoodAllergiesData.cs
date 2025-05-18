@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mvc.Data
+namespace Mvc.Data;
+
+public sealed class AllFoodAllergiesData : EntityData<AllFoodAllergiesData>
 {
-    internal class AllFoodAllergiesData
-    {
-    }
+    public string? AllergyName { get; set; }
 }
