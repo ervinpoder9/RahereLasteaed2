@@ -37,6 +37,7 @@ public static class HtmlShowTable {
     private static TagBuilder createTable() {
         var t = tblTag;
         t.AddCssClass("table");
+        t.AddCssClass("nice-table");
         return t;
     }
     private static TagBuilder tblTag => new("table");
@@ -79,7 +80,7 @@ public static class HtmlShowTable {
     }
     private static TagBuilder tblHdrTag => new("thead");
     private static TagBuilder tblRowTag => new("tr");
-    private static TagBuilder tblColTag => new("td");
+    private static TagBuilder tblColTag => new("th");
     private static string displayNameFor(PropertyInfo p)
         => p.GetCustomAttribute<DisplayAttribute>()?.Name ?? p.Name;
     private static IHtmlContent createBody<TModel>(
