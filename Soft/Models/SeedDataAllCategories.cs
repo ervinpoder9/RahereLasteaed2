@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Mvc.Data;
 using Mvc.Domain;
 using Mvc.Soft.Data;
 
@@ -17,11 +18,11 @@ public static class SeedDataAllCategories
                 return;   
             }
             context.AllCategories.AddRange(
-                new AllCategories { CategoryName = "Õpetajad" },
-                new AllCategories { CategoryName = "Õpetaja assistendid" },
-                new AllCategories { CategoryName = "Aineõpetajad" },
-                new AllCategories { CategoryName = "Juhtkond" },
-                new AllCategories { CategoryName = "Tugikeskus" }
+                new AllCategoriesData { CategoryName = "Õpetajad" },
+                new AllCategoriesData { CategoryName = "Õpetaja assistendid" },
+                new AllCategoriesData { CategoryName = "Aineõpetajad" },
+                new AllCategoriesData { CategoryName = "Juhtkond" },
+                new AllCategoriesData { CategoryName = "Tugikeskus" }
                 );
             context.SaveChanges();
         }

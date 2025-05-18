@@ -12,14 +12,9 @@ public class ApplicationDbContext : IdentityDbContext {
     public DbSet<GroupData> Groups { get; set; } = default!;
     public DbSet<RegistrationData> Registrations { get; set; } = default!;
     public DbSet<TestingData> Tests { get; set; } = default!;
-
-public DbSet<AllCategories> AllCategories { get; set; } = default!;
-
-public DbSet<AllFoodAllergies> AllFoodAllergies { get; set; } = default!;
-
-public DbSet<AllStaff> AllStaff { get; set; } = default!;
-
-public DbSet<Children> Children { get; set; } = default!;
-
-public DbSet<Representative> Representative { get; set; } = default!;
+    public DbSet<AllCategoriesData> AllCategories { get; set; } = default!;
+    public DbSet<AllFoodAllergiesData> AllFoodAllergies { get; set; } = default!;
+    public DbSet<AllStaffData> AllStaff { get; set; } = default!;
+    public DbSet<ChildrenData> Children { get; set; } = default!;
+    public DbSet<RepresentativeData> Representative { get; set; } = default!;
 }
