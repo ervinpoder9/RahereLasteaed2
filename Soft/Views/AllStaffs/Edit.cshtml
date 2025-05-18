@@ -11,17 +11,7 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="position" class="control-label"></label>
-                <input asp-for="position" class="form-control" />
-                <span asp-validation-for="position" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="education" class="control-label"></label>
-                <input asp-for="education" class="form-control" />
-                <span asp-validation-for="education" class="text-danger"></span>
-            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>            
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
@@ -52,6 +42,16 @@
                 <label asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="position" class="control-label"></label>
+                <input asp-for="position" class="form-control" />
+                <span asp-validation-for="position" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="education" class="control-label"></label>
+                <input asp-for="education" class="form-control" />
+                <span asp-validation-for="education" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="AdditionalInfo" class="control-label"></label>

@@ -11,10 +11,7 @@
 </p>
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.RightOfRepresentation)
-            </th>
+        <tr>            
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
@@ -34,6 +31,9 @@
                 @Html.DisplayNameFor(model => model.Email)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.RightOfRepresentation)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.AdditionalInfo)
             </th>
             <th></th>
@@ -41,10 +41,7 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RightOfRepresentation)
-            </td>
+        <tr>            
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -62,6 +59,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RightOfRepresentation)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.AdditionalInfo)
