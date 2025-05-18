@@ -6,12 +6,12 @@ namespace Mvc.Domain;
 public class AllStaff : AllPersons
 {    
     // Ametikoht
-    [Required(ErrorMessage = "position is required.")]
+    [Required(ErrorMessage = "Position is required.")]
     [Display(Name = "Ametikoht")]
-    public string? position { get; set; }
+    public string? Position { get; set; }
 
     // Haridustase
     [Required(ErrorMessage = "Education is required.")]
     [Display(Name = "Haridustase")]
-    public EnumEducation? education { get; set; }
+    public EnumEducation? Education { get; set; }
 }

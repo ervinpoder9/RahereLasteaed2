@@ -510,10 +510,10 @@ namespace Mvc.Soft.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("education")
+                    b.Property<int>("Education")
                         .HasColumnType("int");
 
-                    b.Property<string>("position")
+                    b.Property<string>("Position")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
