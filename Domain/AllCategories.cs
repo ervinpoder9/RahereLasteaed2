@@ -1,4 +1,4 @@
-﻿namespace Mvc.Soft.Models;
+﻿namespace Mvc.Domain;
 
 public class AllCategories
 {

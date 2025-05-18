@@ -1,7 +1,7 @@
 ﻿using Helpers;
 using System.ComponentModel.DataAnnotations;
 
-namespace Mvc.Soft.Models;
+namespace Mvc.Domain;
 
 public class Representative: AllPersons
 {

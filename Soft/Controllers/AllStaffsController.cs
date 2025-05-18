@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Mvc.Domain;
 using Mvc.Soft.Data;
-using Mvc.Soft.Models;
 
 namespace Mvc.Soft.Controllers
 {
