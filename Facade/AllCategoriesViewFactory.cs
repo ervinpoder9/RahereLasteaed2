@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Mvc.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mvc.Facade
+namespace Mvc.Facade;
+
+public sealed class AllCategoriesViewFactory : AbstractViewFactory<AllCategoriesData, AllCategoriesView>
 {
-    internal class AllCategoriesViewFactory
-    {
-    }
 }
+
