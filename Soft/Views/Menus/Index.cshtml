@@ -1,0 +1,71 @@
+﻿@model Mvc.Facade.WeekMenuViewModel
+
+@{
+    ViewData["Title"] = "Igapäevane menüü";
+    var weekDays = new[] { "Esmaspäev", "Teisipäev", "Kolmapäev", "Neljapäev", "Reede" };
+    var dayProperties = new[] { Model.Monday, Model.Tuesday, Model.Wednesday, Model.Thursday, Model.Friday };
+}
+
+<h2>@ViewData["Title"]</h2>
+<h4>Nädal: @Model.WeekStartDate.ToString("dd.MM.yyyy") - @Model.WeekStartDate.AddDays(4).ToString("dd.MM.yyyy")</h4>
+
+<div class="mb-3">
+    <a asp-action="Index"
+       asp-route-weekStart="@Model.WeekStartDate.AddDays(-7)"
+       class="btn btn-info">← Eelmine nädal</a>
+    <a asp-action="Index"
+       asp-route-weekStart="@Model.WeekStartDate.AddDays(7)"
+       class="btn btn-info">Järgmine nädal →</a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th style="width: 20%;">Päev</th>
+                <th style="width: 25%;">Hommikusöök</th>
+                <th style="width: 25%;">Lõunasöök</th>
+                <th style="width: 20%;">Vahepala</th>
+                <th style="width: 10%;">Toimingud</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < 5; i++)
+            {
+                var menu = dayProperties[i];
+
+                <tr>
+                    <td class="fw-bold">
+                        @weekDays[i]<br />
+                        <small class="text-muted">@menu.Date.ToString("dd.MM.yyyy")</small>
+                    </td>
+                    <td>@(menu.Breakfast ?? "-")</td>
+                    <td>@(menu.Lunch ?? "-")</td>
+                    <td>@(menu.Snack ?? "-")</td>
+                    <td>
+                        <a asp-action="EditDay"
+                           asp-route-date="@menu.Date.ToString("yyyy-MM-dd")"
+                           class="btn btn-sm btn-primary">
+                            Muuda
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@if (Model.DailyMenus.Any(m => !string.IsNullOrEmpty(m.Notes)))
+{
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5>Märkused</h5>
+        </div>
+        <div class="card-body">
+            @foreach (var menu in Model.DailyMenus.Where(m => !string.IsNullOrEmpty(m.Notes)))
+            {
+                <p><strong>@menu.Date.ToString("dddd, dd.MM"):</strong> @menu.Notes</p>
+            }
+        </div>
+    </div>
+}

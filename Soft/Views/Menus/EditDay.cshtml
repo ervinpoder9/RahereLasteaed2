@@ -1,0 +1,58 @@
+﻿@model Mvc.Facade.MenuView
+
+@{
+    ViewData["Title"] = $"Muuda menüüd - {ViewBag.DayName}";
+}
+
+<h2>@ViewData["Title"]</h2>
+<h4>@Model.Date.ToString("dd.MM.yyyy")</h4>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="EditDay">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Date" />
+
+            <div class="form-group mb-3">
+                <label asp-for="Breakfast" class="control-label"></label>
+                <textarea asp-for="Breakfast" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Breakfast" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Lunch" class="control-label"></label>
+                <textarea asp-for="Lunch" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Lunch" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Snack" class="control-label"></label>
+                <textarea asp-for="Snack" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Snack" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Notes" class="control-label"></label>
+                <textarea asp-for="Notes" class="form-control" rows="2"></textarea>
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Salvesta" class="btn btn-primary" />
+                <a asp-action="Index"
+                   asp-route-weekStart="@ViewBag.WeekStart"
+                   class="btn btn-secondary">Tagasi</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

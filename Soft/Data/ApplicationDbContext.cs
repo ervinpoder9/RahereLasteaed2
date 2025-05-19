@@ -11,4 +11,5 @@ public class ApplicationDbContext : IdentityDbContext {
     public DbSet<GroupData> Groups { get; set; } = default!;
     public DbSet<RegistrationData> Registrations { get; set; } = default!;
     public DbSet<TestingData> Tests { get; set; } = default!;
+    public DbSet<MenuData> Menus { get; set; } = default!;
 }
