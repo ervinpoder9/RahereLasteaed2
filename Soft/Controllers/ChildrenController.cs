@@ -6,5 +6,6 @@ using Mvc.Soft.Data;
 namespace Mvc.Soft.Controllers;
 
 public class ChildrenController(ApplicationDbContext context) 
-    : BaseController<ChildrenData, ChildrenView>(context, new ChildrenViewFactory())
-{}
+    : BaseController<Children, ChildrenData, ChildrenView>
+    (context, new ChildrenViewFactory(), d => new Children(d))
+{ }

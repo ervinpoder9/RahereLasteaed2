@@ -6,5 +6,6 @@ using Mvc.Soft.Data;
 namespace Mvc.Soft.Controllers;
 
 public class RepresentativesController(ApplicationDbContext context) 
-    : BaseController<RepresentativeData, RepresentativeView>(context, new RepresentativeViewFactory)
-{}
+    : BaseController<Representative, RepresentativeData, RepresentativeView>
+    (context, new RepresentativeViewFactory, d => new Representative(d))
+{ }
