@@ -7,5 +7,5 @@ namespace Mvc.Soft.Controllers;
 
 public class RepresentativesController(ApplicationDbContext context) 
     : BaseController<Representative, RepresentativeData, RepresentativeView>
-    (context, new RepresentativeViewFactory, d => new Representative(d))
+    (context, new RepresentativeViewFactory(), d => new Representative(d))
 { }
