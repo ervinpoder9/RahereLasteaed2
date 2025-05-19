@@ -1,17 +1,15 @@
 ﻿using Helpers;
+using Mvc.Data;
 using System.ComponentModel.DataAnnotations;
 
 namespace Mvc.Domain;
 
-public class AllStaff : AllPersons
+public class AllStaff(AllStaffData d) : AllPersons<AllStaffData>(d)
 {    
     // Ametikoht
-    [Required(ErrorMessage = "Position is required.")]
-    [Display(Name = "Ametikoht")]
-    public string? Position { get; set; }
+    public string? Position => data?.Position;
 
     // Haridustase
-    [Required(ErrorMessage = "Education is required.")]
-    [Display(Name = "Haridustase")]
-    public EnumEducation? Education { get; set; }
+    public EnumEducation? Education => data?.Education;
 }
+

@@ -1,6 +1,8 @@
-﻿namespace Mvc.Domain;
+﻿using Mvc.Data;
 
-public class AllCategories : Entity
+namespace Mvc.Domain;
+
+public class AllCategories(AllCategoriesData d) : Entity<AllCategoriesData>(d)
 {
-    public string? CategoryName { get; set; }
+    public string? CategoryName => data?.CategoryName;
 }

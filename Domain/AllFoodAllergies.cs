@@ -1,6 +1,8 @@
-﻿namespace Mvc.Domain;
+﻿using Mvc.Data;
 
-public class AllFoodAllergies : Entity
+namespace Mvc.Domain;
+
+public class AllFoodAllergies(AllFoodAllergiesData d) : Entity<AllFoodAllergiesData>(d)
 {   
-    public string? AllergyName { get; set; }    
+    public string? AllergyName => data?.AllergyName;
 }

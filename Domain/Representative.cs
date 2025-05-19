@@ -1,13 +1,11 @@
 ﻿using Helpers;
+using Mvc.Data;
 using System.ComponentModel.DataAnnotations;
 
 namespace Mvc.Domain;
 
-public class Representative: AllPersons
+public class Representative(RepresentativeData d): AllPersons<RepresentativeData>(d)
 {
     // Esindusõigus
-    [Required(ErrorMessage = "Right Of Representation is required.")]
-    [Display(Name = "Esindusõigus")]
-    public EnumRightOfRepresentation RightOfRepresentation { get; set; }
-
+   public EnumRightOfRepresentation? RightOfRepresentation => data?.RightOfRepresentation;
 }
