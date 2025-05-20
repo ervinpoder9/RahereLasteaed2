@@ -1,5 +1,17 @@
 ﻿@using Mvc.Core.Editors
+@using Mvc.Core
+@using Mvc.Soft.Data
 @model Mvc.Facade.AllStaffView
+
+@{
+    var db = Services.Get<ApplicationDbContext>();
+    var categories = db?.AllCategories.Select(x => new { x.Id, x.CategoryName })
+        .ToList()??[];
+    SelectList categoryList = new SelectList(categories, "Id", "CategoryName", Model.AllCategoriesId);
+}
+
+@Html.SelectFor(x => x.AllCategoriesId, categoryList)
+
 
 @Html.InputFor(x => x.Name)
 @Html.InputFor(x => x.Surname)
