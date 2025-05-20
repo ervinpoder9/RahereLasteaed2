@@ -1,12 +1,11 @@
 ﻿@using Mvc.Core.Editors
 @using Mvc.Core
+@using Mvc.Domain
 @using Mvc.Soft.Data
 @model Mvc.Facade.AllStaffView
 
 @{
-    var db = Services.Get<ApplicationDbContext>();
-    var categories = db?.AllCategories.Select(x => new { x.Id, x.CategoryName })
-        .ToList()??[];
+    var categories = await Services.Get<IAllCategoriesRepo>()?.GetAsync()! ?? [];
     SelectList categoryList = new SelectList(categories, "Id", "CategoryName", Model.AllCategoriesId);
 }
 

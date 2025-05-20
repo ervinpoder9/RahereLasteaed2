@@ -16,6 +16,14 @@ public sealed class TestingRepo(DbContext db)
 public sealed class RegistrationRepo(DbContext db)
     : Repo<Registration, RegistrationData>(db, d => new(d)), IRegistrationsRepo {}
 
+public sealed class AllCategoriesRepo(DbContext db)
+    : Repo<AllCategories, AllCategoriesData>(db, d => new(d)), IAllCategoriesRepo
+{ }
+public sealed class AllStaffRepo(DbContext db)
+    : Repo<AllStaff, AllStaffData>(db, d => new(d)), IAllStaffRepo
+{ }
+
+
 public class Repo<TObject, TData>(DbContext c, Func<TData?, TObject> f)
     : IRepo<TObject> where TObject : Entity<TData> where TData : EntityData<TData> {
     private readonly DbContext db = c;

@@ -5,6 +5,9 @@ public interface IMovieRolesRepo : IRepo<MovieRole>;
 public interface IGroupsRepo : IRepo<Group>;
 public interface ITestingRepo : IRepo<Testing>;
 public interface IRegistrationsRepo : IRepo<Registration>;
+
+public interface IAllStaffRepo : IRepo<AllStaff>;
+public interface IAllCategoriesRepo : IRepo<AllCategories>;
 public interface IRepo<TObject> {
     public Task<int> PageCount(byte pageSize, string? filter);
     public Task<IEnumerable<TObject>> GetAsync(int pageIdx, byte pageSize
