@@ -25,6 +25,8 @@ internal class Program {
         builder.Services.AddTransient<ITestingRepo, TestingRepo>();
         builder.Services.AddTransient<IAllStaffRepo, AllStaffRepo>();
         builder.Services.AddTransient<IAllCategoriesRepo, AllCategoriesRepo>();
+        builder.Services.AddTransient<IChildrenAndRepRepo, ChildrenAndRepRepo>();
+
 
         Services.init(builder.Services);
         var app = builder.Build();
