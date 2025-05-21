@@ -10,6 +10,8 @@ public interface IAllStaffRepo : IRepo<AllStaff>;
 public interface IAllCategoriesRepo : IRepo<AllCategories>;
 
 public interface IChildrenAndRepRepo : IRepo<ChildrenAndRep>;
+public interface IChildrenRepo : IRepo<Children>;
+public interface IRepresentativesRepo : IRepo<Representative>;
 
 public interface IRepo<TObject> {
     public Task<int> PageCount(byte pageSize, string? filter);

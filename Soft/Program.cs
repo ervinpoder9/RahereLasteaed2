@@ -23,9 +23,14 @@ internal class Program {
         builder.Services.AddTransient<IMovieRolesRepo, MovieRolesRepo>();
         builder.Services.AddTransient<IGroupsRepo, GroupsRepo>();
         builder.Services.AddTransient<ITestingRepo, TestingRepo>();
+
         builder.Services.AddTransient<IAllStaffRepo, AllStaffRepo>();
         builder.Services.AddTransient<IAllCategoriesRepo, AllCategoriesRepo>();
         builder.Services.AddTransient<IChildrenAndRepRepo, ChildrenAndRepRepo>();
+        builder.Services.AddTransient<IChildrenRepo, ChildrenRepo>();
+        builder.Services.AddTransient<IRepresentativesRepo, RepresentativesRepo>();
+
+
 
 
         Services.init(builder.Services);

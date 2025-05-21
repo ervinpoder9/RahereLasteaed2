@@ -27,6 +27,13 @@ public sealed class ChildrenAndRepRepo(DbContext db)
 : Repo<ChildrenAndRep, ChildrenAndRepData>(db, d => new(d)), IChildrenAndRepRepo
 { }
 
+public sealed class ChildrenRepo(DbContext db)
+: Repo<Children, ChildrenData>(db, d => new(d)), IChildrenRepo
+{ }
+public sealed class RepresentativesRepo(DbContext db)
+: Repo<Representative, RepresentativeData>(db, d => new(d)), IRepresentativesRepo
+{ }
+
 
 
 public class Repo<TObject, TData>(DbContext c, Func<TData?, TObject> f)
