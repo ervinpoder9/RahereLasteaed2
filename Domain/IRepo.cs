@@ -8,6 +8,9 @@ public interface IRegistrationsRepo : IRepo<Registration>;
 
 public interface IAllStaffRepo : IRepo<AllStaff>;
 public interface IAllCategoriesRepo : IRepo<AllCategories>;
+
+public interface IChildrenAndRepRepo : IRepo<ChildrenAndRep>;
+
 public interface IRepo<TObject> {
     public Task<int> PageCount(byte pageSize, string? filter);
     public Task<IEnumerable<TObject>> GetAsync(int pageIdx, byte pageSize

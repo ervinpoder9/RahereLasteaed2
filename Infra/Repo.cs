@@ -23,6 +23,11 @@ public sealed class AllStaffRepo(DbContext db)
     : Repo<AllStaff, AllStaffData>(db, d => new(d)), IAllStaffRepo
 { }
 
+public sealed class ChildrenAndRepRepo(DbContext db)
+: Repo<ChildrenAndRep, ChildrenAndRepData>(db, d => new(d)), IChildrenAndRepRepo
+{ }
+
+
 
 public class Repo<TObject, TData>(DbContext c, Func<TData?, TObject> f)
     : IRepo<TObject> where TObject : Entity<TData> where TData : EntityData<TData> {
