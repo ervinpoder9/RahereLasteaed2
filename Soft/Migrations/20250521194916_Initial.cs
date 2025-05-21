@@ -43,6 +43,7 @@ namespace Mvc.Soft.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    AllCategoriesId = table.Column<int>(type: "int", nullable: false),
                     Position = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Education = table.Column<int>(type: "int", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -114,6 +115,22 @@ namespace Mvc.Soft.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Children", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ChildrenAndRep",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ChildId = table.Column<int>(type: "int", nullable: false),
+                    RepresentativeId = table.Column<int>(type: "int", nullable: false),
+                    RightOfRepresentation = table.Column<int>(type: "int", nullable: false),
+                    AdditionalInfo = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ChildrenAndRep", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -190,7 +207,6 @@ namespace Mvc.Soft.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RightOfRepresentation = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IDNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -421,6 +437,9 @@ namespace Mvc.Soft.Migrations
 
             migrationBuilder.DropTable(
                 name: "Children");
+
+            migrationBuilder.DropTable(
+                name: "ChildrenAndRep");
 
             migrationBuilder.DropTable(
                 name: "Groups");

@@ -299,6 +299,31 @@ namespace Mvc.Soft.Migrations
                     b.ToTable("AllStaff");
                 });
 
+            modelBuilder.Entity("Mvc.Data.ChildrenAndRepData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AdditionalInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ChildId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RepresentativeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RightOfRepresentation")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ChildrenAndRep");
+                });
+
             modelBuilder.Entity("Mvc.Data.ChildrenData", b =>
                 {
                     b.Property<int>("Id")
@@ -470,9 +495,6 @@ namespace Mvc.Soft.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RightOfRepresentation")
-                        .HasColumnType("int");
 
                     b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
