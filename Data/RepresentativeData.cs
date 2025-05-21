@@ -9,6 +9,4 @@ using System.Threading.Tasks;
 namespace Mvc.Data;
 
 public sealed class RepresentativeData : AllPersonsData<RepresentativeData>
-{
-    public EnumRightOfRepresentation RightOfRepresentation { get; set; }
-}
+{ }

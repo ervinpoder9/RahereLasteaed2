@@ -10,14 +10,4 @@ using System.Threading.Tasks;
 namespace Mvc.Facade;
 
 [DisplayName("Representative")] public sealed class RepresentativeView : AllPersonsView
-{
-    // Esindusõigus
-    private const string esindusOigus = "Esindusõigus";
-    private const string emRight = "Right Of Representation is required.";
-
-    
-    // Esindusõigus
-    [Required(ErrorMessage = emRight)]
-    [Display(Name = esindusOigus)]
-    public EnumRightOfRepresentation RightOfRepresentation { get; set; }
-}
+{ }

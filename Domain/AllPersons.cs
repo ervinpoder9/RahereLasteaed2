@@ -16,6 +16,4 @@ public abstract class AllPersons<T>(T? d) : Entity<T>(d) where T : AllPersonsDat
     public string? Mobile => data?.Mobile;
     // E-mail
     public string? Email => data?.Email;
-    // Muu oluline info
-    public string? AdditionalInfo => data?.AdditionalInfo;
 }
