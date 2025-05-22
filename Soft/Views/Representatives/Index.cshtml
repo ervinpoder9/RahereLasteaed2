@@ -1,0 +1,15 @@
+﻿@using Mvc.Core.Editors
+@model IEnumerable<Mvc.Facade.RepresentativeView>
+
+@{
+    Layout = "_Index";
+
+    var propsToShow = new[] 
+    {
+        nameof(Mvc.Facade.RepresentativeView.Name),
+        nameof(Mvc.Facade.RepresentativeView.Surname),
+        nameof(Mvc.Facade.RepresentativeView.IDNumber)
+    };
+}
+
+@Html.ShowTable(Model, propsToShow)

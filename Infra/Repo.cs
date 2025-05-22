@@ -18,6 +18,26 @@ public sealed class MenusRepo(DbContext db)
 public sealed class RegistrationRepo(DbContext db)
     : Repo<Registration, RegistrationData>(db, d => new(d)), IRegistrationsRepo {}
 
+public sealed class AllCategoriesRepo(DbContext db)
+    : Repo<AllCategories, AllCategoriesData>(db, d => new(d)), IAllCategoriesRepo
+{ }
+public sealed class AllStaffRepo(DbContext db)
+    : Repo<AllStaff, AllStaffData>(db, d => new(d)), IAllStaffRepo
+{ }
+
+public sealed class ChildrenAndRepRepo(DbContext db)
+: Repo<ChildrenAndRep, ChildrenAndRepData>(db, d => new(d)), IChildrenAndRepRepo
+{ }
+
+public sealed class ChildrenRepo(DbContext db)
+: Repo<Children, ChildrenData>(db, d => new(d)), IChildrenRepo
+{ }
+public sealed class RepresentativesRepo(DbContext db)
+: Repo<Representative, RepresentativeData>(db, d => new(d)), IRepresentativesRepo
+{ }
+
+
+
 public class Repo<TObject, TData>(DbContext c, Func<TData?, TObject> f)
     : IRepo<TObject> where TObject : Entity<TData> where TData : EntityData<TData> {
     private readonly DbContext db = c;

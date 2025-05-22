@@ -1,0 +1,15 @@
+﻿@using Mvc.Core.Editors
+@model IEnumerable<Mvc.Facade.ChildrenView>
+
+@{
+    Layout = "_Index";
+
+    var propsToShow = new[] 
+    {
+        nameof(Mvc.Facade.ChildrenView.Name),
+        nameof(Mvc.Facade.ChildrenView.Surname),
+        nameof(Mvc.Facade.ChildrenView.IDNumber)
+    };
+}
+
+@Html.ShowTable(Model, propsToShow)
