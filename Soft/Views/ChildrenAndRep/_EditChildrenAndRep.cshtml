@@ -1,5 +1,35 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using Mvc.Core.Editors
+@using Mvc.Core
+@using Mvc.Domain
+@using Mvc.Soft.Data
+@model Mvc.Facade.ChildrenAndRepView
+
 @{
+    var child = await Services.Get<IChildrenRepo>()?.GetAsync()! ?? [];
+    var representative = await Services.Get<IRepresentativesRepo>()?.GetAsync()! ?? [];
+
+    var childList = new SelectList(
+    child?.Where(child => child?.Name != null && child.Surname != null)
+          .Select(child => new { child.Id, FullName = $"{child.Name} {child.Surname}" })
+    ?? [],
+    "Id",
+    "FullName",
+    Model.ChildId
+        );
+
+    var representativeList = new SelectList(
+    representative?.Where(representative => representative?.Name != null && representative.Surname != null)
+          .Select(representative => new { representative.Id, FullName = $"{representative.Name} {representative.Surname}" })
+    ?? [],
+    "Id",
+    "FullName",
+    Model.RepresentativeId
+        );
 }
+
+@Html.SelectFor(x => x.ChildId, childList)
+@Html.SelectFor(x => x.RepresentativeId, representativeList)
+@Html.InputForEnum(x => x.RightOfRepresentation)
+@Html.InputFor(x => x.AdditionalInfo)
+
+
