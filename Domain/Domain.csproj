@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj" />
-    <ProjectReference Include="..\Helpers\Helpers.csproj" />
     <InternalsVisibleTo Include="Mvc.Tests" />
   </ItemGroup>
 

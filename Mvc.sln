@@ -19,8 +19,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facade", "Facade\Facade.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{54C4C6E6-0E93-4A99-A814-A0624270CEC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpers", "Helpers\Helpers.csproj", "{0926FD2F-0DC1-4A53-A5AD-61EFABC35877}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -127,18 +125,6 @@ Global
 		{54C4C6E6-0E93-4A99-A814-A0624270CEC7}.Release|x64.Build.0 = Release|Any CPU
 		{54C4C6E6-0E93-4A99-A814-A0624270CEC7}.Release|x86.ActiveCfg = Release|Any CPU
 		{54C4C6E6-0E93-4A99-A814-A0624270CEC7}.Release|x86.Build.0 = Release|Any CPU
-		{0926FD2F-0DC1-4A53-A5AD-61EFABC35877}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0926FD2F-0DC1-4A53-A5AD-61EFABC35877}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0926FD2F-0DC1-4A53-A5AD-61EFABC35877}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{0926FD2F-0DC1-4A53-A5AD-61EFABC35877}.Debug|x64.Build.0 = Debug|Any CPU
-		{0926FD2F-0DC1-4A53-A5AD-61EFABC35877}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{0926FD2F-0DC1-4A53-A5AD-61EFABC35877}.Debug|x86.Build.0 = Debug|Any CPU
-		{0926FD2F-0DC1-4A53-A5AD-61EFABC35877}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0926FD2F-0DC1-4A53-A5AD-61EFABC35877}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0926FD2F-0DC1-4A53-A5AD-61EFABC35877}.Release|x64.ActiveCfg = Release|Any CPU
-		{0926FD2F-0DC1-4A53-A5AD-61EFABC35877}.Release|x64.Build.0 = Release|Any CPU
-		{0926FD2F-0DC1-4A53-A5AD-61EFABC35877}.Release|x86.ActiveCfg = Release|Any CPU
-		{0926FD2F-0DC1-4A53-A5AD-61EFABC35877}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
