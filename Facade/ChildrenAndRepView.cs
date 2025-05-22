@@ -12,12 +12,11 @@ namespace Mvc.Facade;
 [DisplayName("Children And Reperesentative")] public sealed class ChildrenAndRepView : EntityView
 {
     [Display(Name = "Child")] public int ChildId { get; set; }
-    [Display(Name = "Lapse nimi")] public string? ChildName { get; set; }
-    [Display(Name = "Lapse perekonnanimi")] public string? ChildSurname { get; set; }
-
     [Display(Name = "Representative")] public int RepresentativeId { get; set; }
-    [Display(Name = "Esindaja nimi")] public string? RepresentativeName { get; set; }
-    [Display(Name = "Esindaja perekonnanimi")] public string? RepresentativeSurname { get; set; }
+
+
+    [Display(Name = "Child's Name")] public string? ChildFullName { get; set; }
+    [Display(Name = "Representative's Name")] public string? RepresentativeFullName { get; set; }
 
 
 
