@@ -8,6 +8,5 @@ using System.Threading.Tasks;
 namespace Mvc.Facade;
 
 public sealed class AllCategoriesViewFactory : AbstractViewFactory<AllCategoriesData, AllCategoriesView>
-{
-}
+{ }
 

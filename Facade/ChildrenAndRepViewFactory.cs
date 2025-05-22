@@ -8,5 +8,4 @@ using System.Threading.Tasks;
 namespace Mvc.Facade;
 
 public sealed class ChildrenAndRepViewFactory : AbstractViewFactory<ChildrenAndRepData, ChildrenAndRepView>
-{
-}
+{ }

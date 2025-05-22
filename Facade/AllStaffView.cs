@@ -12,26 +12,21 @@ namespace Mvc.Facade;
 
 [DisplayName("All Staff")] public sealed class AllStaffView : AllPersonsView
 {
-    [Display(Name = "Kategooria")] public int AllCategoriesId { get; set; }
-    [Display(Name = "Kategooria")] public string? Category { get; set; }
+    [Display(Name = "Category")] public int AllCategoriesId { get; set; }
+    [Display(Name = "Category")] public string? Category { get; set; }
 
     // Ametikoht
-    private const string ametikoht = "Ametikoht";
     private const string emPosition = "Position is required.";
     // Haridustase
-    private const string haridustase = "Haridustase";
-    private const string emEducation = "Education is required.";
+    private const string haridustase = "Level of Education";
+    private const string emEducation = "Level of Education is required.";
     
 
     // Ametikoht
-    [Required(ErrorMessage = emPosition)]
-    [Display(Name = ametikoht)]
-    public string? Position { get; set; }
+    [Required(ErrorMessage = emPosition)] public string? Position { get; set; }
 
-
+    // Haridustase
     [Required(ErrorMessage = emEducation)]
     [Display(Name = haridustase)]
     public EnumEducation? Education { get; set; }
-
-
 }

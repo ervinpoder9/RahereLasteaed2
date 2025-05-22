@@ -13,11 +13,6 @@ public class ChildrenAndRep(ChildrenAndRepData d) : Entity<ChildrenAndRepData>(d
     public int ChildrenId => data?.ChildId ?? 0;
     public int RepresentativeId => data?.RepresentativeId ?? 0;
 
-    // Esindusõigus
     public EnumRightOfRepresentation? RightOfRepresentation => data?.RightOfRepresentation;
-
-    // Muu oluline info
     public string? AdditionalInfo => data?.AdditionalInfo;
-
-
 }
