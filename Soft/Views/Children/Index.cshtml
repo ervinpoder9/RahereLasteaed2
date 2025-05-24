@@ -1,15 +1,27 @@
-﻿@using Mvc.Core.Editors
+﻿@using Mvc.Core
+@using Mvc.Core.Editors
+@using Mvc.Domain
+@using Mvc.Facade
 @model IEnumerable<Mvc.Facade.ChildrenView>
 
 @{
     Layout = "_Index";
 
-    var propsToShow = new[] 
+    async Task<IEnumerable<RepresentativeView>> relationShip()
     {
-        nameof(Mvc.Facade.ChildrenView.Name),
-        nameof(Mvc.Facade.ChildrenView.Surname),
-        nameof(Mvc.Facade.ChildrenView.IDNumber)
-    };
+        var id = ViewBag.SelectedId;
+        var child = await Services.Get<IChildrenRepo>()?.GetAsync(id) as Children;
+        if (child != null) await child.LoadLazy();
+
+        var relation = child?.Representative?.Where(x => x is not null);
+
+        return relation?.Select(x => new RepresentativeViewFactory().CreateView(x!.data)) ?? [];
+    }
 }
 
 @Html.ShowTable(Model, true)
+
+@if (ViewBag.SelectedId != null)
+{
+    @await Html.PartialAsync("_Relationship", await relationShip())
+}
