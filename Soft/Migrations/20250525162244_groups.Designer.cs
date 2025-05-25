@@ -12,8 +12,8 @@ using Mvc.Soft.Data;
 namespace Mvc.Soft.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250522061940_test")]
-    partial class test
+    [Migration("20250525162244_groups")]
+    partial class groups
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -369,11 +369,20 @@ namespace Mvc.Soft.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AmountOfChildren")
+                    b.Property<string>("AssistantTeacher")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Capacity")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrimaryTeacher")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("RoomNumber")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

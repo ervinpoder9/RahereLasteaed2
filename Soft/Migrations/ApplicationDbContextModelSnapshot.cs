@@ -366,11 +366,20 @@ namespace Mvc.Soft.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AmountOfChildren")
+                    b.Property<string>("AssistantTeacher")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Capacity")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrimaryTeacher")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("RoomNumber")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
