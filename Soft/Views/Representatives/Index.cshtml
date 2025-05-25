@@ -8,7 +8,7 @@
 @{
     Layout = "_Index";
 
-    async Task<IEnumerable<ChildrenView>> relationShip()
+    async Task<IEnumerable<ChildrenView>> RelationShip()
     {
         var id = ViewBag.SelectedId;
         var rep = await Services.Get<IRepresentativesRepo>()?.GetAsync(id) as Representative;
@@ -25,6 +25,6 @@
 
 @if (ViewBag.SelectedId != null)
 {
-    @await Html.PartialAsync("_Relationship", await relationShip())
+    @await Html.PartialAsync("_Relationship", await RelationShip())
 }
 
