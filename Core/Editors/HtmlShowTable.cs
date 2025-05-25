@@ -45,15 +45,29 @@ public static class HtmlShowTable {
         this IHtmlHelper<IEnumerable<TModel>> h, PropertyInfo[] properties) {
         var header = tblHdrTag;
         var row = tblRowTag;
+        bool disableSorting = typeof(TModel).Name == "ChildrenAndRepView"; // Lisasin juurde
         if (isRelated)
             row.AddCssClass("table-secondary");
         foreach (var p in properties) {
             var col = tblColTag;
             var name = displayNameFor(p);
-            name = h.updateDisplayName(name, p.Name);
-            var sortOrder = h.updateSortOrder(p.Name);
-            var link = $"<a href=\"?pageIdx=0&orderBy={sortOrder}&filter={h.ViewBag.Filter}\">{name}</a>";
-            col.InnerHtml.AppendHtml(isRelated ? name : link);
+            //name = h.updateDisplayName(name, p.Name);
+            //var sortOrder = h.updateSortOrder(p.Name);
+            //var link = $"<a href=\"?pageIdx=0&orderBy={sortOrder}&filter={h.ViewBag.Filter}\">{name}</a>";
+            //col.InnerHtml.AppendHtml(isRelated ? name : link);
+
+            if (!disableSorting && !isRelated) // Lisasin juurde
+            {
+                name = h.updateDisplayName(name, p.Name);
+                var sortOrder = h.updateSortOrder(p.Name);
+                var link = $"<a href=\"?pageIdx=0&orderBy={sortOrder}&filter={h.ViewBag.Filter}\">{name}</a>";
+                col.InnerHtml.AppendHtml(link);
+            }
+            else
+            {
+                col.InnerHtml.AppendHtml(name);
+            }
+
             row.InnerHtml.AppendHtml(col);
         }
         if (!isRelated)
