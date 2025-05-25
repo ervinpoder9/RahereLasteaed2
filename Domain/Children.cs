@@ -11,10 +11,16 @@ public class Children(ChildrenData d) : AllPersons<ChildrenData>(d)
 
     // Select nupp
     internal List<ChildrenAndRep> relationship = [];
+
+    // Esindajad
     public List<Representative?> Representative => relationship?
         .Where(r => r.Representative is not null)
         .Select(r => r.Representative)
         .ToList() ?? [];
+
+    // Esindusoigus
+    public List<ChildrenAndRep> Relationship => relationship;
+
     public override async Task LoadLazy()
     {
         await base.LoadLazy();
