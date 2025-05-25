@@ -15,8 +15,8 @@ namespace Mvc.Facade;
     [Display(Name = "Representative")] public int RepresentativeId { get; set; }
 
 
-    [Display(Name = "Child's Name")] public string? ChildFullName { get; set; }
-    [Display(Name = "Representative's Name")] public string? RepresentativeFullName { get; set; }
+    [Display(Name = "Child's Full Name")] public string? ChildFullName { get; set; }
+    [Display(Name = "Representative's Full Name")] public string? RepresentativeFullName { get; set; }
 
 
 
