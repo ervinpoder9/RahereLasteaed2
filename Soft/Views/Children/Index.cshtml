@@ -26,7 +26,10 @@
 
         var relation = child?.Relationship?.Where(x => x is not null);
 
-        return relation?.Select(x => new ChildrenAndRepViewFactory().CreateView(x!.data)) ?? [];
+        // Параллельно вызываем асинхронный CreateView(...) для каждого элемента
+        var views = await Task.WhenAll(relation?.Select(x => new ChildrenAndRepViewFactory().CreateView(x.data, true)) ?? []);
+
+        return views;
     }
 }
 

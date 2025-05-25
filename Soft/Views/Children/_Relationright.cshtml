@@ -1,7 +1,27 @@
 ﻿@model IEnumerable<ChildrenAndRepView>
 @using Mvc.Facade
 @using Mvc.Core.Editors
+@using Mvc.Core.Helpers
+
 
 <h4>Right of Representation</h4>
 
-@Html.RelatedTable(Model)
+<table class="table">
+    <thead>
+        <tr class="table-secondary">
+            <td>Representative</td>
+            <td>Right Of Representation</td>
+            <td>Additional Info</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.RepresentativeFullName</td>
+                <td>@item.RightOfRepresentation.GetDescription()</td>
+                <td>@item.AdditionalInfo</td>
+            </tr>
+        }
+    </tbody>
+</table>
