@@ -18,14 +18,14 @@ namespace Mvc.Soft.Models
                     return;
                 }
                 context.AllFoodAllergies.AddRange(
-                    new AllFoodAllergiesData { AllergyName = "Toidutalumatust ei esine" },
-                    new AllFoodAllergiesData { AllergyName = "Muna" },
-                    new AllFoodAllergiesData { AllergyName = "Gluteen" },
-                    new AllFoodAllergiesData { AllergyName = "Kala" },
-                    new AllFoodAllergiesData { AllergyName = "Piimatooted" },
-                    new AllFoodAllergiesData { AllergyName = "Sojauba" },
-                    new AllFoodAllergiesData { AllergyName = "Pähklid" },
-                    new AllFoodAllergiesData { AllergyName = "Mereannid" }
+                    new FoodAllergiesData { AllergyName = "Toidutalumatust ei esine" },
+                    new FoodAllergiesData { AllergyName = "Muna" },
+                    new FoodAllergiesData { AllergyName = "Gluteen" },
+                    new FoodAllergiesData { AllergyName = "Kala" },
+                    new FoodAllergiesData { AllergyName = "Piimatooted" },
+                    new FoodAllergiesData { AllergyName = "Sojauba" },
+                    new FoodAllergiesData { AllergyName = "Pähklid" },
+                    new FoodAllergiesData { AllergyName = "Mereannid" }
                 );
                 context.SaveChanges();
             }

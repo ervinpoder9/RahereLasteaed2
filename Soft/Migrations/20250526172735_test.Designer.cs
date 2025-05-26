@@ -12,8 +12,8 @@ using Mvc.Soft.Data;
 namespace Mvc.Soft.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250525162244_groups")]
-    partial class groups
+    [Migration("20250526172735_test")]
+    partial class test
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -243,22 +243,6 @@ namespace Mvc.Soft.Migrations
                     b.ToTable("AllCategories");
                 });
 
-            modelBuilder.Entity("Mvc.Data.AllFoodAllergiesData", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("AllergyName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AllFoodAllergies");
-                });
-
             modelBuilder.Entity("Mvc.Data.AllStaffData", b =>
                 {
                     b.Property<int>("Id")
@@ -361,6 +345,31 @@ namespace Mvc.Soft.Migrations
                     b.ToTable("Children");
                 });
 
+            modelBuilder.Entity("Mvc.Data.FoodAllergiesData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AllergyName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Reaction")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Severity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AllFoodAllergies");
+                });
+
             modelBuilder.Entity("Mvc.Data.GroupData", b =>
                 {
                     b.Property<int>("Id")
@@ -428,7 +437,7 @@ namespace Mvc.Soft.Migrations
                     b.Property<string>("Genre")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Price")
+                    b.Property<double?>("Price")
                         .HasColumnType("float");
 
                     b.Property<string>("Rating")
