@@ -52,7 +52,7 @@ public static class HtmlShowTable {
             var name = displayNameFor(p);
             name = h.updateDisplayName(name, p.Name);
             var sortOrder = h.updateSortOrder(p.Name);
-            var link = $"<a href=\"?pageIdx=0&orderBy={sortOrder}&filter={h.ViewBag.Filter}\">{name}</a>";
+            var link = $"<a class=\"link-white\" href=\"?pageIdx=0&orderBy={sortOrder}&filter={h.ViewBag.Filter}\">{name}</a>";
             col.InnerHtml.AppendHtml(isRelated ? name : link);
             row.InnerHtml.AppendHtml(col);
         }
@@ -118,6 +118,7 @@ public static class HtmlShowTable {
         , bool hasSelect) {
         var id = getId<TModel>(item);
         var td = tblDataTag;
+        td.AddCssClass("separator");
         var sel = h.hrefSel(id);
         var ed = h.hrefEd(id);
         var det = h.hrefDet(id);
@@ -136,11 +137,11 @@ public static class HtmlShowTable {
     private static int getId<TModel>(object? item)
         => typeof(TModel).GetProperty("Id")?.GetValue(item) as int? ?? 0;
     private static IHtmlContent hrefEd<TModel>(this IHtmlHelper<IEnumerable<TModel>> h, int i)
-        => h.ActionLink("Edit", "Edit", new { id = i });
+        => h.ActionLink("Edit", "Edit", new { id = i }, new { @class = "link-dark" });
     private static IHtmlContent hrefDet<TModel>(this IHtmlHelper<IEnumerable<TModel>> h, int i)
-        => h.ActionLink("Details", "Details", new { id = i });
+        => h.ActionLink("Details", "Details", new { id = i }, new { @class = "link-dark" });
     private static IHtmlContent hrefDel<TModel>(this IHtmlHelper<IEnumerable<TModel>> h, int i)
-        => h.ActionLink("Delete", "Delete", new { id = i });
+        => h.ActionLink("Delete", "Delete", new { id = i }, new { @class = "link-dark" });
     #endregion    
     private static IHtmlContent hrefSel<TModel>(this IHtmlHelper<IEnumerable<TModel>> h, int i)
         => h.ActionLink("Select", "Index", new {
@@ -148,6 +149,6 @@ public static class HtmlShowTable {
             pageIdx = h.ViewBag.PageIdx,
             orderBy = h.ViewBag.OrderBy,
             filter = h.ViewBag.Filter
-        });
+        }, new { @class = "link-dark" });
 }
 

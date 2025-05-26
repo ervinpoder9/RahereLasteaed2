@@ -114,11 +114,17 @@ main {
 }
 
 .link-white {
-    color: #fff;
-    text-decoration: none;
+    color: #fff !important;
+    text-decoration: none !important;
+    background-color: transparent !important;
 }
 
 .link-dark {
-    color: #212529;
-    text-decoration: none;
+    color: #212529 !important;
+    text-decoration: none !important;
+    background-color: transparent !important;
+}
+
+.separator {
+    border-left: 2px solid #9a9a9a;
 }
