@@ -6,10 +6,10 @@
 
 @{
     var categories = await Services.Get<IAllCategoriesRepo>()?.GetAsync()! ?? [];
-    SelectList categoryList = new SelectList(categories, "Id", "CategoryName", Model.AllCategoriesId);
+    SelectList categoryList = new SelectList(categories, "Id", "CategoryName", Model.CategoryId);
 }
 
-@Html.SelectFor(x => x.AllCategoriesId, categoryList)
+@Html.SelectFor(x => x.CategoryId, categoryList)
 
 
 @Html.InputFor(x => x.Name)

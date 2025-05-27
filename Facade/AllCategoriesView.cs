@@ -10,5 +10,5 @@ namespace Mvc.Facade;
 
 [DisplayName("All Categories")] public sealed class AllCategoriesView : EntityView
 {
-    [Display(Name = "Category")] public string? CategoryName { get; set; }
+    [Display(Name = "CategoryName")] public string? CategoryName { get; set; }
 }

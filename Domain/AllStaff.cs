@@ -6,7 +6,10 @@ namespace Mvc.Domain;
 
 public class AllStaff(AllStaffData d) : AllPersons<AllStaffData>(d)
 {
-    public int AllCategoriesId => data?.AllCategoriesId ?? 0;
+    public int CategoryId => data?.CategoryId ?? 0;
+    public AllCategories? Category => category;
+    internal AllCategories? category;
+
     public string? Position => data?.Position;
     public EnumEducation? Education => data?.Education;  
 }

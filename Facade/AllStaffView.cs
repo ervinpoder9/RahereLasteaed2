@@ -12,8 +12,8 @@ namespace Mvc.Facade;
 
 [DisplayName("All Staff")] public sealed class AllStaffView : AllPersonsView
 {
-    [Display(Name = "Category")] public int AllCategoriesId { get; set; }
-    [Display(Name = "Category")] public string? Category { get; set; }
+    [Display(Name = "CategoryName")] public int CategoryId { get; set; }
+    [Display(Name = "CategoryName")] public string? CategoryName { get; set; }
 
     // Ametikoht
     private const string emPosition = "Position is required.";
