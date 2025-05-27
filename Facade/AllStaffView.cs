@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Mvc.Facade;
 
-[DisplayName("All Staff")] public sealed class AllStaffView : AllPersonsView
+[DisplayName("Staff")] public sealed class AllStaffView : AllPersonsView
 {
     [Display(Name = "CategoryName")] public int CategoryId { get; set; }
     [Display(Name = "CategoryName")] public string? CategoryName { get; set; }

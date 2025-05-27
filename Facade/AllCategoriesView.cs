@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Mvc.Facade;
 
-[DisplayName("All Categories")] public sealed class AllCategoriesView : EntityView
+[DisplayName("Staff by Categories")] public sealed class AllCategoriesView : EntityView
 {
-    [Display(Name = "CategoryName")] public string? CategoryName { get; set; }
+    [Display(Name = "Category")] public string? CategoryName { get; set; }
 }

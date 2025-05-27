@@ -9,7 +9,7 @@ using Helpers;
 
 namespace Mvc.Facade;
 
-[DisplayName("Children And Reperesentative")] public sealed class ChildrenAndRepView : EntityView
+[DisplayName("Children and Reperesentatives")] public sealed class ChildrenAndRepView : EntityView
 {
     [Display(Name = "Child")] public int ChildId { get; set; }
     [Display(Name = "Representative")] public int RepresentativeId { get; set; }
