@@ -1,0 +1,51 @@
+﻿@{
+	var title = Mvc.Core.TypeHelper.DisplayName(Model, "Index");
+	Layout = "_Layout";
+
+	var prevDisabled = ViewBag.PageIdx == 0 ? "disabled" : "";
+	var nextDisabled = ViewBag.PageIdx + 1 == ViewBag.PageCount ? "disabled" : "";
+}
+
+<div class="format-box">	
+	<h1>@title</h1>
+
+	<form asp-action="Index" method="get">
+		<div class="form-actions">
+			<label>
+				Find by name:
+				<input type="text" name="Filter" value="@ViewBag.Filter"
+					   class="form-control custom-input"
+					   style="width: auto; display: inline-block;" />
+			</label>
+			<input type="submit" value="Search" class="btn btn-hover" /> |
+			<a asp-action="Index" class="btn btn-hover">Back to Full List</a>
+		</div>
+	</form>
+
+	@RenderBody()
+	<a asp-action="Index"
+	   asp-route-pageIdx="0"
+	   asp-route-orderBy="@(ViewBag.OrderBy)"
+	   class="btn btn-hover @prevDisabled">
+		First
+	</a>
+	<a asp-action="Index"
+	   asp-route-pageIdx="@(ViewBag.PageIdx - 1)"
+	   asp-route-orderBy="@(ViewBag.OrderBy)"
+	   class="btn btn-hover @prevDisabled">
+		Previous
+	</a>
+	Page @(ViewBag.PageIdx + 1) of @ViewBag.PageCount
+	<a asp-action="Index"
+	   asp-route-pageIdx="@(ViewBag.PageIdx + 1)"
+	   asp-route-orderBy="@(ViewBag.OrderBy)"
+	   class="btn btn-hover @nextDisabled">
+		Next
+	</a>
+	<a asp-action="Index"
+	   asp-route-pageIdx="@(ViewBag.PageCount - 1)"
+	   asp-route-orderBy="@(ViewBag.OrderBy)"
+	   class="btn btn-hover @nextDisabled">
+		Last
+	</a>
+</div>

@@ -6,7 +6,7 @@
 @model IEnumerable<Mvc.Facade.AllCategoriesView>
 
 @{
-    Layout = "_Index";
+    Layout = "_IndexWithoutCreate";
 
     async Task<IEnumerable<AllStaffView>> StaffByCategory()
     {
@@ -21,7 +21,7 @@
     }
 }
 
-@Html.ShowTable(Model, true)
+@Html.ShowTableStaffInCat(Model, true)
 
 @if (ViewBag.SelectedId != null)
 {

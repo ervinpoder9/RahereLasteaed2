@@ -120,6 +120,8 @@ public static class ShowTableStaffInCategory
                 data.InnerHtml.AppendHtml(value);
                 row.InnerHtml.AppendHtml(data);
             }
+            if (!isRelated)
+                h.addHrefs(row, item, hasSelect);
             tblBody.InnerHtml.AppendHtml(row);
         }
         return tblBody;
@@ -136,6 +138,30 @@ public static class ShowTableStaffInCategory
     }
     private static int getId<TModel>(object? item)
         => typeof(TModel).GetProperty("Id")?.GetValue(item) as int? ?? 0;
+
+    private static void addHrefs<TModel>(
+        this IHtmlHelper<IEnumerable<TModel>> h, TagBuilder row, TModel item
+        , bool hasSelect)
+    {
+        var id = getId<TModel>(item);
+        var td = tblDataTag;
+        var sel = h.hrefSel(id);        
+        if (hasSelect)
+        {
+            td.InnerHtml.AppendHtml(sel);
+            td.InnerHtml.Append(" ");
+        }
+        
+        row.InnerHtml.AppendHtml(td);
+    }
+    private static IHtmlContent hrefSel<TModel>(this IHtmlHelper<IEnumerable<TModel>> h, int i)
+        => h.ActionLink("Select", "Index", new
+        {
+            selectedId = i,
+            pageIdx = h.ViewBag.PageIdx,
+            orderBy = h.ViewBag.OrderBy,
+            filter = h.ViewBag.Filter
+        });
 
     #endregion    
 }
