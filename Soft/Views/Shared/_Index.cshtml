@@ -3,7 +3,7 @@
 	Layout = "_Layout";
 
 	var prevDisabled = ViewBag.PageIdx == 0 ? "disabled" : "";
-	var nextDisabled = ViewBag.PageIdx + 1 == ViewBag.PageCount ? "disabled" : "";
+	var nextDisabled = ViewBag.PageIdx + 1 >= ViewBag.PageCount ? "disabled" : "";
 }
 
 <div class="format-box">
@@ -39,7 +39,7 @@
 	   class="btn btn-hover @prevDisabled">
 		Previous
 	</a>
-	Page @(ViewBag.PageIdx + 1) of @ViewBag.PageCount
+	Page @(ViewBag.PageIdx + 1) of @Math.Max(@ViewBag.PageCount, 1)
 	<a asp-action="Index"
 	   asp-route-pageIdx="@(ViewBag.PageIdx + 1)"
 	   asp-route-orderBy="@(ViewBag.OrderBy)"
