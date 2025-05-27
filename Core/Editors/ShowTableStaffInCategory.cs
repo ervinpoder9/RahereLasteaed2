@@ -14,6 +14,20 @@ public static class ShowTableStaffInCategory
 {
     #region 
     private static bool isRelated;
+    public static IHtmlContent RelatedTableStaffInCategory<TModel>(
+        this IHtmlHelper<IEnumerable<TModel>> h, IEnumerable<TModel> list,
+        params string[] propsToShow)
+    {
+        isRelated = true;
+        string[] orderedProps = new[]
+        {
+            "Position", "Name", "Surname", "IDNumber",
+            "Address", "Mobile", "Email", "Education", "AdditionalInfo"
+        };
+        var r = h.ShowTableStaffInCat(list, false, orderedProps);
+        isRelated = false;
+        return r;
+    }    
     public static IHtmlContent ShowTableStaffInCat<TModel>(
         this IHtmlHelper<IEnumerable<TModel>> h, IEnumerable<TModel> list,
         bool hasSelect = false, params string[] propsToShow)
@@ -31,30 +45,9 @@ public static class ShowTableStaffInCategory
         tbl.InnerHtml.AppendHtml(h.createHeader(props));
         tbl.InnerHtml.AppendHtml(h.createBody(props, list, hasSelect));
         return tbl;
-    }
-    public static IHtmlContent ShowTableStaffInCat<TModel>(
-        this IHtmlHelper<IEnumerable<TModel>> h, IEnumerable<TModel> list,
-        params string[] propsToShow)
-        => h.ShowTableStaffInCat(list, false, propsToShow);
-    public static IHtmlContent RelatedTableStaffInCategory<TModel>(
-        this IHtmlHelper<IEnumerable<TModel>> h, IEnumerable<TModel> list,
-        params string[] propsToShow)
-    {
-        isRelated = true;
-
-        string[] orderedProps = new[]
-        {
-            "Position", "Name", "Surname", "IDNumber",
-            "Address", "Mobile", "Email", "Education", "AdditionalInfo"
-        };
-
-        var r = h.ShowTableStaffInCat(list, false, orderedProps);
-        isRelated = false;
-        return r;
-    }
+    }    
     private static PropertyInfo[] getProperties<TModel>()
-        => typeof(TModel)?.GetProperties()
-        .Where(p => p.Name != "Id").ToArray() ?? [];
+        => typeof(TModel)?.GetProperties().Where(p => p.Name != "Id").ToArray() ?? [];
     private static TagBuilder createTable()
     {
         var t = tblTag;
@@ -68,30 +61,16 @@ public static class ShowTableStaffInCategory
     {
         var header = tblHdrTag;
         var row = tblRowTag;
-        bool disableSorting = typeof(TModel).Name == "ChildrenAndRepView"; // Lisasin juurde
         if (isRelated)
             row.AddCssClass("table-secondary");
         foreach (var p in properties)
         {
             var col = tblColTag;
             var name = displayNameFor(p);
-            //name = h.updateDisplayName(name, p.Name);
-            //var sortOrder = h.updateSortOrder(p.Name);
-            //var link = $"<a href=\"?pageIdx=0&orderBy={sortOrder}&filter={h.ViewBag.Filter}\">{name}</a>";
-            //col.InnerHtml.AppendHtml(isRelated ? name : link);
-
-            if (!disableSorting && !isRelated) // Lisasin juurde
-            {
-                name = h.updateDisplayName(name, p.Name);
-                var sortOrder = h.updateSortOrder(p.Name);
-                var link = $"<a href=\"?pageIdx=0&orderBy={sortOrder}&filter={h.ViewBag.Filter}\">{name}</a>";
-                col.InnerHtml.AppendHtml(link);
-            }
-            else
-            {
-                col.InnerHtml.AppendHtml(name);
-            }
-
+            name = h.updateDisplayName(name, p.Name);
+            var sortOrder = h.updateSortOrder(p.Name);
+            var link = $"<a href=\"?pageIdx=0&orderBy={sortOrder}&filter={h.ViewBag.Filter}\">{name}</a>";
+            col.InnerHtml.AppendHtml(isRelated ? name : link);
             row.InnerHtml.AppendHtml(col);
         }
         if (!isRelated)
@@ -141,8 +120,6 @@ public static class ShowTableStaffInCategory
                 data.InnerHtml.AppendHtml(value);
                 row.InnerHtml.AppendHtml(data);
             }
-            if (!isRelated)
-                h.addHrefs(row, item, hasSelect);
             tblBody.InnerHtml.AppendHtml(row);
         }
         return tblBody;
@@ -157,46 +134,8 @@ public static class ShowTableStaffInCategory
             return new HtmlString(dt?.ToShortDateString() ?? "");
         return new HtmlString(v?.ToString() ?? "");
     }
-    private static void addHrefs<TModel>(
-        this IHtmlHelper<IEnumerable<TModel>> h, TagBuilder row, TModel item
-        , bool hasSelect)
-    {
-        var id = getId<TModel>(item);
-        var td = tblDataTag;
-        var sel = h.hrefSel(id);
-        var ed = h.hrefEd(id);
-        var det = h.hrefDet(id);
-        var del = h.hrefDel(id);
-        if (hasSelect)
-        {
-            td.InnerHtml.AppendHtml(sel);
-            td.InnerHtml.Append(" ");
-        }
-        td.InnerHtml.AppendHtml(ed);
-        td.InnerHtml.Append(" ");
-        td.InnerHtml.AppendHtml(det);
-        td.InnerHtml.Append(" ");
-        td.InnerHtml.AppendHtml(del);
-        row.InnerHtml.AppendHtml(td);
-    }
     private static int getId<TModel>(object? item)
         => typeof(TModel).GetProperty("Id")?.GetValue(item) as int? ?? 0;
-    private static IHtmlContent hrefEd<TModel>(this IHtmlHelper<IEnumerable<TModel>> h, int i)
-        => h.ActionLink("Edit", "Edit", new { id = i });
-    private static IHtmlContent hrefDet<TModel>(this IHtmlHelper<IEnumerable<TModel>> h, int i)
-        => h.ActionLink("Details", "Details", new { id = i });
-    private static IHtmlContent hrefDel<TModel>(this IHtmlHelper<IEnumerable<TModel>> h, int i)
-        => h.ActionLink("Delete", "Delete", new { id = i });
+
     #endregion    
-    private static IHtmlContent hrefSel<TModel>(this IHtmlHelper<IEnumerable<TModel>> h, int i)
-        => h.ActionLink("Select", "Index", new
-        {
-            selectedId = i,
-            pageIdx = h.ViewBag.PageIdx,
-            orderBy = h.ViewBag.OrderBy,
-            filter = h.ViewBag.Filter
-        });
 }
-
-
-
