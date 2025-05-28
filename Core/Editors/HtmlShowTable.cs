@@ -2,6 +2,7 @@
 using System.Reflection;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Mvc.Core.Helpers;
 
 namespace Mvc.Core.Editors;
 
@@ -125,6 +126,9 @@ public static class HtmlShowTable {
         var dt = v as DateTime?;
         if (dt != null)
             return new HtmlString(dt?.ToShortDateString() ?? "");
+        var e = v as Enum;
+        if (e != null)
+            return new HtmlString(e.GetDescription());
         return new HtmlString(v?.ToString() ?? "");
     }
     private static void addHrefs<TModel>(

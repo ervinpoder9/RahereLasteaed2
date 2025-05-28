@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Mvc.Core.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -131,9 +132,17 @@ public static class ShowTableStaffInCategory
     private static IHtmlContent getValue<TModel>(PropertyInfo? p, TModel? item)
     {
         var v = p?.GetValue(item);
+
+        // Обработка DateTime
         var dt = v as DateTime?;
         if (dt != null)
             return new HtmlString(dt?.ToShortDateString() ?? "");
+
+        // Обработка Enum с Description
+        var e = v as Enum;
+        if (e != null)
+            return new HtmlString(e.GetDescription());
+
         return new HtmlString(v?.ToString() ?? "");
     }
     private static int getId<TModel>(object? item)
