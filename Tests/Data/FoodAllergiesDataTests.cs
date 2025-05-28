@@ -1,6 +1,6 @@
 using Mvc.Data;
 
-namespace Mvc.Tests;
+namespace Mvc.Tests.Data;
 
 [TestClass] public class FoodAllergiesDataTests : SealedTests<FoodAllergiesData, EntityData<FoodAllergiesData>> {
     [TestMethod] public void AllergyNameTest() => isProperty<string?>();

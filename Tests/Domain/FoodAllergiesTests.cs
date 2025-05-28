@@ -1,4 +1,4 @@
-namespace Mvc.Tests;
+namespace Mvc.Tests.Domain;
 
 [TestClass]
 public class FoodAllergiesTests

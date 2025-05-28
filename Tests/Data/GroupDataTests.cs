@@ -1,6 +1,6 @@
 using Mvc.Data;
 
-namespace Mvc.Tests;
+namespace Mvc.Tests.Data;
 
 [TestClass] public class GroupDataTests : SealedTests<GroupData, EntityData<GroupData>> {
     [TestMethod] public void NameTest() => isProperty<string?>();

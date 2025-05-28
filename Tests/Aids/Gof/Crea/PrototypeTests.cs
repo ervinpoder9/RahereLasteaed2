@@ -1,6 +1,6 @@
 ﻿using Mvc.Aids.Gof.Crea;
 
-namespace Mvc.Tests.Aids.GoF.Crea;
+namespace Mvc.Tests.Aids.Gof.Crea;
 
 internal class OtherTestClass {
     public int? Value { get; set; }

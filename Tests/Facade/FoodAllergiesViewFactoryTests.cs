@@ -1,4 +1,4 @@
-namespace Mvc.Tests;
+namespace Mvc.Tests.Facade;
 
 [TestClass]
 public class FoodAllergiesViewFactoryTests
