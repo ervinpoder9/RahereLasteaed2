@@ -13,4 +13,5 @@ namespace Mvc.Tests;
     protected void notTested(string? msg = null) => Assert.Inconclusive(msg);
     protected void same<T>(T? x, T? y, string? msg = null) => Assert.AreSame(x, y, msg);
     protected void notSame<T>(T? x, T? y, string? msg = null) => Assert.AreNotSame(x, y, msg);
+    protected void fail(string? msg = null) => Assert.Fail(msg);
 }

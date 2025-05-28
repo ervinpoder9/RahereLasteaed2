@@ -2,7 +2,7 @@ using Mvc.Data;
 
 namespace Mvc.Tests.Data;
 
-[TestClass] public class MovieDataTests : ClassTests<MovieData, EntityData<MovieData>> {
+[TestClass] public class MovieDataTests : SealedTests<MovieData, EntityData<MovieData>> {
     [TestInitialize] public override void TestInitialize() {
         base.TestInitialize();
         if (obj == null) return;
