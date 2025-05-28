@@ -4,7 +4,7 @@ using Mvc.Domain;
 namespace Mvc.Tests.Domain;
 
 [TestClass] public class MovieTests : BaseClassTests<Movie, Entity<MovieData>> {
-    protected override Movie? createObj() {
+    protected override Movie createObj() {
         var d = new MovieData {
             Id = 1,
             Title = "Title",

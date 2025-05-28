@@ -8,13 +8,11 @@ public abstract class BaseClassTests<TClass, TBaseClass> : StaticTests
     protected TClass? obj;
     protected abstract TClass createObj();
     protected override Type setType() => typeof(TClass);
-    [TestInitialize]
-    public override void Initialize() {
+    [TestInitialize] public override void Initialize() {
         base.Initialize();
         obj = createObj();
     }
-    [TestCleanup]
-    public override void Cleanup() {
+    [TestCleanup] public override void Cleanup() {
         base.Cleanup();
         obj = null;
     }

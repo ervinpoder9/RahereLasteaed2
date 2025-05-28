@@ -37,4 +37,3 @@ public abstract class EnumTests<TEnum>(int count) : StaticTests where TEnum : En
         equal((int)actual, value);
     }
 }
-}

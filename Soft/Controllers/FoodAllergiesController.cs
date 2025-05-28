@@ -5,7 +5,7 @@ using Mvc.Soft.Data;
 
 namespace Mvc.Soft.Controllers;
 
-public class FoodAllergiesController(ApplicationDbContext context) 
+public class FoodAllergiesController(ApplicationDbContext c) 
     : BaseController<FoodAllergies, FoodAllergiesData, FoodAllergiesView>
-    (context, new FoodAllergiesViewFactory(), d => new FoodAllergies(d)) { }
+    (c, new FoodAllergiesViewFactory(), d => new (d)) { }
 
