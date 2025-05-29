@@ -8,18 +8,18 @@ namespace Mvc.Tests.Domain;
         var d = new GroupData {
             Id = 1,
             Name = "Name",
-            Capacity = DateTime.Today,
-            PrimaryTeacher = "Genre",
-            AssistantTeacher = "Rating",
+            Capacity = 10,
+            PrimaryTeacher = "PTeacher",
+            AssistantTeacher = "ATeacher",
             RoomNumber = 100
         };
         return new Group(d);
     }
-    [TestMethod] public void TitleTest() => equal("Title", obj?.Title);
-    [TestMethod] public void ReleaseDateTest() => equal(DateTime.Today, obj?.ReleaseDate);
-    [TestMethod] public void GenreTest() => equal("Genre", obj?.Genre);
-    [TestMethod] public void PriceTest() => equal(1.0, obj?.Price);
-    [TestMethod] public void RatingTest() => equal("Rating", obj?.Rating);
+    [TestMethod] public void NameTest() => equal("Name", obj?.Name);
+    [TestMethod] public void CapacityTest() => equal(10, obj?.Capacity);
+    [TestMethod] public void PrimaryTeacherTest() => equal("PTeacher", obj?.PrimaryTeacher);
+    [TestMethod] public void AssistantTeacherTest() => equal("ATeacher", obj?.AssistantTeacher);
+    [TestMethod] public void RoomNumberTest() => equal(100, obj?.RoomNumber);
     [TestMethod] public void IdTest() => equal(1, obj?.Id);
     [TestMethod] public void DataTest() => notNull(obj?.data);
 }
