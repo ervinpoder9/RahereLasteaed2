@@ -24,7 +24,7 @@ public abstract class DbBaseTests<TClass, TBaseClass, TObject, TData> :
     }
     protected abstract TObject? createEntity(Func<TData> getData);
     protected TObject? createEntity() => entity = createEntity(createData);
-    /*[TestInitialize] public override void Initialize() {
+    [TestInitialize] public override void Initialize() {
         var options = new DbContextOptionsBuilder<ApplicationDbContext>()
           .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
           .Options;
@@ -32,7 +32,7 @@ public abstract class DbBaseTests<TClass, TBaseClass, TObject, TData> :
         dbSet = dbContext!.Set<TData>();
         seedData();
         base.Initialize();
-    }*/
+    }
     [TestCleanup] public override void Cleanup() {
         base.Cleanup();
         dbContext = null;

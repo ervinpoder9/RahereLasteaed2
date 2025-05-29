@@ -12,7 +12,7 @@ public class ApplicationDbContext : IdentityDbContext {
     public DbSet<RegistrationData> Registrations { get; set; } = default!;
     public DbSet<TestingData> Tests { get; set; } = default!;
     public DbSet<AllCategoriesData> AllCategories { get; set; } = default!;
-    public DbSet<FoodAllergiesData> AllFoodAllergies { get; set; } = default!;
+    public DbSet<FoodAllergiesData> FoodAllergies { get; set; } = default!;
     public DbSet<AllStaffData> AllStaff { get; set; } = default!;
     public DbSet<ChildrenData> Children { get; set; } = default!;
     public DbSet<RepresentativeData> Representative { get; set; } = default!;
