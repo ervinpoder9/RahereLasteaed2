@@ -105,8 +105,9 @@ main {
     padding: 0.7rem 2.5rem;
 }
 
-.nice-table th, a {
+.nice-table th {
     background: #212529;
+    color: #fff;
 }
 
 .nice-table tr:last-child td {
@@ -127,4 +128,9 @@ main {
 
 .separator {
     border-left: 2px solid #9a9a9a;
+}
+
+.selected {
+    background-color: #e3f2fd !important;
+    color: #222 !important;
 }
