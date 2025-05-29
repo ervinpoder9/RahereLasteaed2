@@ -52,22 +52,14 @@ public static class HtmlShowTable {
         foreach (var p in properties) {
             var col = tblColTag;
             var name = displayNameFor(p);
-            //name = h.updateDisplayName(name, p.Name);
-            //var sortOrder = h.updateSortOrder(p.Name);
-            //var link = $"<a href=\"?pageIdx=0&orderBy={sortOrder}&filter={h.ViewBag.Filter}\">{name}</a>";
-            //col.InnerHtml.AppendHtml(isRelated ? name : link);
-
-            if (!disableSorting && !isRelated) // Lisasin juurde
-            {
+            if (disableSorting) {
+                col.InnerHtml.AppendHtml(name);
+            } else {
                 name = h.updateDisplayName(name, p.Name);
                 var sortOrder = h.updateSortOrder(p.Name);
                 var link = $"<a class=\"link-white\" href=\"?pageIdx=0&orderBy={sortOrder}&filter={h.ViewBag.Filter}\">{name}</a>";
-                col.InnerHtml.AppendHtml(link);
+                col.InnerHtml.AppendHtml(isRelated ? name : link);
                 row.InnerHtml.AppendHtml(col);
-            }
-            else
-            {
-                col.InnerHtml.AppendHtml(name);
             }
         }
         if (!isRelated)
@@ -75,28 +67,6 @@ public static class HtmlShowTable {
         header.InnerHtml.AppendHtml(row);
         return header;
     }
-    /*
-     private static IHtmlContent createHeader<TModel>(
-              this IHtmlHelper<IEnumerable<TModel>> h, PropertyInfo[] properties) {
-              var header = tblHdrTag;
-              var row = tblRowTag;
-              if (isRelated)
-                  row.AddCssClass("table-secondary");
-              foreach (var p in properties) {
-                  var col = tblColTag;
-                  var name = displayNameFor(p);
-                  name = h.updateDisplayName(name, p.Name);
-                  var sortOrder = h.updateSortOrder(p.Name);
-                  var link = $"<a class=\"link-white\" href=\"?pageIdx=0&orderBy={sortOrder}&filter={h.ViewBag.Filter}\">{name}</a>";
-                  col.InnerHtml.AppendHtml(isRelated ? name : link);
-                  row.InnerHtml.AppendHtml(col);
-              }
-              if (!isRelated)
-                  row.InnerHtml.AppendHtml(tblColTag);
-              header.InnerHtml.AppendHtml(row);
-              return header;
-          }
-    */
     private static string updateDisplayName<TModel>(
         this IHtmlHelper<IEnumerable<TModel>> h, string name, string propName) {
         var sortOrder = h.ViewBag.OrderBy as string;

@@ -325,6 +325,9 @@ namespace Mvc.Soft.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
                     b.Property<string>("IDNumber")
                         .HasColumnType("nvarchar(max)");
 

@@ -1,7 +1,6 @@
 ﻿namespace Mvc.Data;
 
-public abstract class AllPersonsData<T> : EntityData<T> where T : EntityData<T>
-{
+public abstract class AllPersonsData<T> : EntityData<T> where T : EntityData<T> {
     public string? Name { get; set; }
     public string? Surname { get; set; }
     public string? IDNumber { get; set; }

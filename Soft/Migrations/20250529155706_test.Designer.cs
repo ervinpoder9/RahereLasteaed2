@@ -12,7 +12,7 @@ using Mvc.Soft.Data;
 namespace Mvc.Soft.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250529151010_test")]
+    [Migration("20250529155706_test")]
     partial class test
     {
         /// <inheritdoc />
@@ -327,6 +327,9 @@ namespace Mvc.Soft.Migrations
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
 
                     b.Property<string>("IDNumber")
                         .HasColumnType("nvarchar(max)");
