@@ -1,6 +1,5 @@
-﻿using Helpers;
-using Mvc.Data;
-using System.ComponentModel.DataAnnotations;
+﻿using Mvc.Data;
+using Helpers;
 
 namespace Mvc.Domain;
 

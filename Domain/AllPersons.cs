@@ -1,5 +1,4 @@
 ﻿using Mvc.Data;
-using System.ComponentModel.DataAnnotations;
 
 namespace Mvc.Domain;
 public abstract class AllPersons<T>(T? d) : Entity<T>(d) where T : AllPersonsData<T>

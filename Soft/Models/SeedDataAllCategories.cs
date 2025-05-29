@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Mvc.Data;
-using Mvc.Domain;
 using Mvc.Soft.Data;
 
 namespace Mvc.Soft.Models;
