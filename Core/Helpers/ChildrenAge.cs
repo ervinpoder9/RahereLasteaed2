@@ -2,7 +2,7 @@
 
 public static class ChildrenAge
 {
-    /*public static int GetAge(string idNumber)
+    public static int GetAge(string idNumber)
     {
         if (string.IsNullOrEmpty(idNumber))
         {
@@ -32,5 +32,5 @@ public static class ChildrenAge
         if (birthDate > today.AddYears(-age)) age--;
 
         return age;
-    }*/
+    }
 }

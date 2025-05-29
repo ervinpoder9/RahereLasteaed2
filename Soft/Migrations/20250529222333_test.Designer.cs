@@ -12,7 +12,7 @@ using Mvc.Soft.Data;
 namespace Mvc.Soft.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250529155706_test")]
+    [Migration("20250529222333_test")]
     partial class test
     {
         /// <inheritdoc />
@@ -367,7 +367,7 @@ namespace Mvc.Soft.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AllFoodAllergies");
+                    b.ToTable("FoodAllergies");
                 });
 
             modelBuilder.Entity("Mvc.Data.GroupData", b =>

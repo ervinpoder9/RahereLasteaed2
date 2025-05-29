@@ -25,21 +25,6 @@ namespace Mvc.Soft.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AllFoodAllergies",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    AllergyName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Reaction = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Antidote = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AllFoodAllergies", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AllStaff",
                 columns: table => new
                 {
@@ -134,6 +119,21 @@ namespace Mvc.Soft.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ChildrenAndRep", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FoodAllergies",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AllergyName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Reaction = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Antidote = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FoodAllergies", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -438,9 +438,6 @@ namespace Mvc.Soft.Migrations
                 name: "AllCategories");
 
             migrationBuilder.DropTable(
-                name: "AllFoodAllergies");
-
-            migrationBuilder.DropTable(
                 name: "AllStaff");
 
             migrationBuilder.DropTable(
@@ -463,6 +460,9 @@ namespace Mvc.Soft.Migrations
 
             migrationBuilder.DropTable(
                 name: "ChildrenAndRep");
+
+            migrationBuilder.DropTable(
+                name: "FoodAllergies");
 
             migrationBuilder.DropTable(
                 name: "Groups");

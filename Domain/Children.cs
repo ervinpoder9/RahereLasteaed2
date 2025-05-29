@@ -6,7 +6,7 @@ namespace Mvc.Domain;
 
 public class Children(ChildrenData d) : AllPersons<ChildrenData>(d)
 {
-    //public int Age => data?.IDNumber != null ? ChildrenAge.GetAge(data.IDNumber) : 0;
+    public int Age => data?.IDNumber != null ? ChildrenAge.GetAge(data.IDNumber) : 0;
     public int GroupId => data?.GroupId ?? 0;
 
     // Select nupp

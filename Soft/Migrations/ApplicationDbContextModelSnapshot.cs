@@ -364,7 +364,7 @@ namespace Mvc.Soft.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AllFoodAllergies");
+                    b.ToTable("FoodAllergies");
                 });
 
             modelBuilder.Entity("Mvc.Data.GroupData", b =>
