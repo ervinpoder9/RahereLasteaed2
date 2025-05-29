@@ -12,7 +12,7 @@ using Mvc.Soft.Data;
 namespace Mvc.Soft.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250529121125_test")]
+    [Migration("20250529141726_test")]
     partial class test
     {
         /// <inheritdoc />
