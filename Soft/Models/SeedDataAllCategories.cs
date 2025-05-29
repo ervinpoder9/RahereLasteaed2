@@ -18,11 +18,11 @@ public static class SeedDataAllCategories
                 return;   
             }
             context.AllCategories.AddRange(
-                new AllCategoriesData { CategoryName = "Õpetajad" },
-                new AllCategoriesData { CategoryName = "Õpetaja assistendid" },
-                new AllCategoriesData { CategoryName = "Aineõpetajad" },
-                new AllCategoriesData { CategoryName = "Juhtkond" },
-                new AllCategoriesData { CategoryName = "Tugikeskus" }
+                new AllCategoriesData { CategoryName = "Teachers" },
+                new AllCategoriesData { CategoryName = "Teacher's Assistants" },
+                new AllCategoriesData { CategoryName = "Subject Teachers" },
+                new AllCategoriesData { CategoryName = "Administration" },
+                new AllCategoriesData { CategoryName = "Support Center" }
                 );
             context.SaveChanges();
         }

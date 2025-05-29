@@ -1,0 +1,7 @@
+﻿@model IEnumerable<ChildrenView>
+@using Mvc.Facade
+@using Mvc.Core.Editors
+
+<h3>Children</h3>
+
+@Html.RelatedTable(Model, "Name", "Surname", "IDNumber")

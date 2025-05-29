@@ -11,9 +11,5 @@ namespace Mvc.Facade;
 
 [DisplayName("Children")] public sealed class ChildrenView : AllPersonsView
 {
-    private const string vanus = "Vanus";
-
-    // Vanus
-    [Display(Name = vanus)]
     public int Age => IDNumber != null ? ChildrenAge.GetAge(IDNumber) : 0;
 }

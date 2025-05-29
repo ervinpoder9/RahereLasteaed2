@@ -9,24 +9,24 @@ namespace Helpers;
 
 public enum EnumEducation
 {
-    [Description("Põhiharidus")]
+    [Description("Basic Education")]
     PrimaryEducation = 0,
 
-    [Description("Keskharidus")]
+    [Description("General Secondary Education")]
     SecondaryEducation = 1,
 
-    [Description("Kutseharidus")]
+    [Description("Vocational Education")]
     VocationalEducation = 2,
 
-    [Description("Rakenduskõrgharidus")]
+    [Description("Professional Higher Education")]
     AppliedHigherEducation = 3,
 
-    [Description("Bakalaureuse kraat")]
+    [Description("Bachelor's degree")]
     BachelorsDegree = 4,
 
-    [Description("Magistrikraat")]
+    [Description("Master's degree")]
     MastersDegree = 5,
 
-    [Description("Doktorikraat")]
+    [Description("Doctoral degrees")]
     DoctoralDegree = 6
 }

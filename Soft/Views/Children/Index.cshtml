@@ -1,15 +1,43 @@
-﻿@using Mvc.Core.Editors
+﻿@using Mvc.Core
+@using Mvc.Core.Editors
+@using Mvc.Domain
+@using Mvc.Facade
 @model IEnumerable<Mvc.Facade.ChildrenView>
 
 @{
     Layout = "_Index";
 
-    var propsToShow = new[] 
+    async Task<IEnumerable<RepresentativeView>> RelationShip()
     {
-        nameof(Mvc.Facade.ChildrenView.Name),
-        nameof(Mvc.Facade.ChildrenView.Surname),
-        nameof(Mvc.Facade.ChildrenView.IDNumber)
-    };
+        var id = ViewBag.SelectedId;
+        var child = await Services.Get<IChildrenRepo>()?.GetAsync(id) as Children;
+        if (child != null) await child.LoadLazy();
+
+        var relation = child?.Representative?.Where(x => x is not null);
+
+        return relation?.Select(x => new RepresentativeViewFactory().CreateView(x!.data)) ?? [];
+    }
+
+    async Task<IEnumerable<ChildrenAndRepView>> RelationRight()
+    {
+        var id = ViewBag.SelectedId;
+        var child = await Services.Get<IChildrenRepo>()?.GetAsync(id) as Children;
+        if (child != null) await child.LoadLazy();
+
+        var relation = child?.Relationship?.Where(x => x is not null);
+
+        // Параллельно вызываем асинхронный CreateView(...) для каждого элемента
+        var views = await Task.WhenAll(relation?.Select(x => new ChildrenAndRepViewFactory().CreateView(x.data, true)) ?? []);
+
+        return views;
+    }
 }
 
-@Html.ShowTable(Model, propsToShow)
+@Html.ShowTable(Model, true, "Name", "Surname", "IDNumber")
+
+@if (ViewBag.SelectedId != null)
+{
+    @await Html.PartialAsync("_Relationship", await RelationShip())
+    @await Html.PartialAsync("_Relationright", await RelationRight())
+
+}

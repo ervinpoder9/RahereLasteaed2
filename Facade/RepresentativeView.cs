@@ -9,5 +9,5 @@ using System.Threading.Tasks;
 
 namespace Mvc.Facade;
 
-[DisplayName("Representative")] public sealed class RepresentativeView : AllPersonsView
+[DisplayName("Representatives")] public sealed class RepresentativeView : AllPersonsView
 { }

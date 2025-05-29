@@ -1,36 +1,29 @@
 ﻿@using Mvc.Core.Editors
+@using Mvc.Core
+@using Mvc.Domain
+@using Mvc.Facade
+
 @model IEnumerable<Mvc.Facade.AllCategoriesView>
 
 @{
-    Layout = "_Index";
+    Layout = "_IndexWithoutCreate";
+
+    async Task<IEnumerable<AllStaffView>> StaffByCategory()
+    {
+        var id = ViewBag.SelectedId; // ID выбранной категории
+        var category = await Services.Get<IAllCategoriesRepo>()?.GetAsync(id) as AllCategories;
+
+        if (category != null) await category.LoadLazy(); // Загружаем всех связанных сотрудников
+
+        var staffList = category?.Staff?.Where(x => x is not null);
+
+        return staffList?.Select(x => new AllStaffViewFactory().CreateView(x!.data)) ?? [];
+    }
 }
 
-<h1>Index</h1>
+@Html.ShowTableStaffInCat(Model, true)
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CategoryName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+@if (ViewBag.SelectedId != null)
+{
+    @await Html.PartialAsync("_StaffByCategory", await StaffByCategory())
 }
-    </tbody>
-</table>

@@ -9,12 +9,12 @@ namespace Helpers;
 
 public enum EnumRightOfRepresentation
 {
-    [Description("Esindusõigus seaduse alusel, lapsevanem")]
+    [Description("Law, Parent")]
     LawParent = 0,
 
-    [Description("Esindusõigus kohtuotsuse alusel, lapsevanem")]
+    [Description("Court Order, Parent")]
     CourtOrderParent = 1,
 
-    [Description("Esindusõigus kohtuotsuse alusel, lapse eestkostja")]
+    [Description("Court Order, Guardian")]
     CourtOrder = 2   
 }

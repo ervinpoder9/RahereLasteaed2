@@ -1,4 +1,5 @@
 ﻿using Helpers;
+using Mvc.Core;
 using Mvc.Data;
 using System;
 using System.Collections.Generic;
@@ -10,14 +11,24 @@ namespace Mvc.Domain;
 
 public class ChildrenAndRep(ChildrenAndRepData d) : Entity<ChildrenAndRepData>(d)
 {
-    public int ChildrenId => data?.ChildId ?? 0;
+    public int ChildId => data?.ChildId ?? 0;
     public int RepresentativeId => data?.RepresentativeId ?? 0;
 
-    // Esindusõigus
     public EnumRightOfRepresentation? RightOfRepresentation => data?.RightOfRepresentation;
-
-    // Muu oluline info
     public string? AdditionalInfo => data?.AdditionalInfo;
 
+    // ChildrenAndRep <=> Children
+    public Children? Children => child;
+    internal Children? child;
 
+    // ChildrenAndRep <=> Representative
+    public Representative? Representative => representative;
+    internal Representative? representative;
+
+    public override async Task LoadLazy()
+    {
+        await base.LoadLazy();
+        child = await Services.Get<IChildrenRepo>()?.GetAsync(ChildId)!;
+        representative = await Services.Get<IRepresentativesRepo>()?.GetAsync(RepresentativeId)!;
+    }
 }
