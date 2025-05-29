@@ -240,22 +240,6 @@ namespace Mvc.Soft.Migrations
                     b.ToTable("AllCategories");
                 });
 
-            modelBuilder.Entity("Mvc.Data.AllFoodAllergiesData", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("AllergyName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AllFoodAllergies");
-                });
-
             modelBuilder.Entity("Mvc.Data.AllStaffData", b =>
                 {
                     b.Property<int>("Id")
@@ -358,6 +342,28 @@ namespace Mvc.Soft.Migrations
                     b.ToTable("Children");
                 });
 
+            modelBuilder.Entity("Mvc.Data.FoodAllergiesData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AllergyName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Antidote")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Reaction")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AllFoodAllergies");
+                });
+
             modelBuilder.Entity("Mvc.Data.GroupData", b =>
                 {
                     b.Property<int>("Id")
@@ -366,11 +372,20 @@ namespace Mvc.Soft.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AmountOfChildren")
+                    b.Property<string>("AssistantTeacher")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Capacity")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrimaryTeacher")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RoomNumber")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

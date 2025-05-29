@@ -17,7 +17,6 @@ internal class Program {
         builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             .AddEntityFrameworkStores<ApplicationDbContext>();
         builder.Services.AddControllersWithViews();
-
         builder.Services.AddTransient<DbContext, ApplicationDbContext>();
         builder.Services.AddTransient<IMoviesRepo, MoviesRepo>();
         builder.Services.AddTransient<IMovieRolesRepo, MovieRolesRepo>();
@@ -25,30 +24,23 @@ internal class Program {
         builder.Services.AddTransient<ITestingRepo, TestingRepo>();
         builder.Services.AddTransient<IMenusRepo, MenusRepo>();
         builder.Services.AddTransient<IRegistrationsRepo, RegistrationRepo>();
-
         builder.Services.AddTransient<IAllStaffRepo, AllStaffRepo>();
         builder.Services.AddTransient<IAllCategoriesRepo, AllCategoriesRepo>();
         builder.Services.AddTransient<IChildrenAndRepRepo, ChildrenAndRepRepo>();
         builder.Services.AddTransient<IChildrenRepo, ChildrenRepo>();
         builder.Services.AddTransient<IRepresentativesRepo, RepresentativesRepo>();
 
-
-
-
         Services.init(builder.Services);
         var app = builder.Build();
 
-        using (var scope = app.Services.CreateScope())
-        {
+        using (var scope = app.Services.CreateScope()) {
             var services = scope.ServiceProvider;
-
             SeedDataAllCategories.Initialize(services);
-            SeedDataAllFoodAllergies.Initialize(services);
         }
 
         if (app.Environment.IsDevelopment()) {
-            app.UseMigrationsEndPoint();
-          //  seedData(app);
+            app.UseMigrationsEndPoint(); 
+            seedData(app);
         } else {
             app.UseExceptionHandler("/Home/Error");
             app.UseHsts();
@@ -66,7 +58,7 @@ internal class Program {
             .WithStaticAssets();
         app.Run();
     }
-    /*
+    
     private static void seedData(WebApplication app) {
         Task.Run(async () => {
             IServiceProvider? services = null;
@@ -80,5 +72,5 @@ internal class Program {
                 logger?.LogError(e, "An error occurred while seeding the database.");
             }
         });
-    }*/
+    }
 }

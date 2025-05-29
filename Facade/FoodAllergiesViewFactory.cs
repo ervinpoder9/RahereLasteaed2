@@ -7,6 +7,4 @@ using System.Threading.Tasks;
 
 namespace Mvc.Facade;
 
-public sealed class AllFoodAllergiesViewFactory : AbstractViewFactory<AllFoodAllergiesData, AllFoodAllergiesView>
-{
-}
+public sealed class FoodAllergiesViewFactory : AbstractViewFactory<FoodAllergiesData, FoodAllergiesView> { }

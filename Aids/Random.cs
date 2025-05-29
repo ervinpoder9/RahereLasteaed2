@@ -117,5 +117,6 @@ public static class Random {
         dt = dt == default ? isMin ? minDt : maxDt : dt;
         return dt.Ticks;
     }
+    public static T? Type<T>() => (T?)random(typeof(T));
 }
 
