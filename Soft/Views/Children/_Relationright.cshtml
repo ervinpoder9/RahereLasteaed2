@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ChildrenAndRepView>
+@using Mvc.Facade
+@using Mvc.Core.Helpers
+
+
+<h4>Right of Representation</h4>
+
+<table class="table nice-table">
+    <thead>
+        <tr class="table-secondary">
+            <th>Representative</th>
+            <th>Right Of Representation</th>
+            <th>Additional Info</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.RepresentativeFullName</td>
+                <td>@item.RightOfRepresentation.GetDescription()</td>
+                <td>@item.AdditionalInfo</td>
+            </tr>
+        }
+    </tbody>
+</table>

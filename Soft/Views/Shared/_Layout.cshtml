@@ -11,32 +11,50 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="navbar-brand link-dark" asp-area="" asp-controller="Home" asp-action="Index">Kindergarten</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-	                    <li class="nav-item">
-		                    <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Index">Movies</a>
-	                    </li>
-	                    <li class="nav-item">
-		                    <a class="nav-link text-dark" asp-area="" asp-controller="Groups" asp-action="Index">Groups</a>
-	                    </li>
-	                    <li class="nav-item">
-		                    <a class="nav-link text-dark" asp-area="" asp-controller="MovieRoles" asp-action="Index">Roles</a>
-	                    </li>
-	                    <li class="nav-item">
-		                    <a class="nav-link text-dark" asp-area="" asp-controller="Absences" asp-action="Index">Puudumised</a>
-	                    </li>
-	                    <li class="nav-item">
-		                    <a class="nav-link text-dark" asp-area="" asp-controller="Testing" asp-action="Index">Testing</a>
+                        <li class="nav-item">
+                            <a class="nav-link link-dark" asp-area="" asp-controller="Movies" asp-action="Index">Movies</a>
 	                    </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link link-dark" asp-area="" asp-controller="Groups" asp-action="Index">Groups</a>
+	                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-dark" asp-area="" asp-controller="FoodAllergies" asp-action="Index">Allergies</a>
+	                    </li>
+	                    <li class="nav-item">
+                            <a class="nav-link link-dark" asp-area="" asp-controller="Registrations" asp-action="Index">Registrations</a>
+	                    </li>
+	                    <li class="nav-item">
+                            <a class="nav-link link-dark" asp-area="" asp-controller="MovieRoles" asp-action="Index">Roles</a>
+	                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-dark" asp-area="" asp-controller="AllCategories" asp-action="Index">Kindergarten Team</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-dark" asp-area="" asp-controller="AllStaffs" asp-action="Index">Staff</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-dark" asp-area="" asp-controller="Children" asp-action="Index">Children</a>
+                        </li>
+	                    <li class="nav-item">
+                            <a class="nav-link link-dark" asp-area="" asp-controller="Representatives" asp-action="Index">Representatives</a>
+	                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-dark" asp-area="" asp-controller="ChildrenAndRep" asp-action="Index">Right of Representation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-dark" asp-area="" asp-controller="Menus" asp-action="Index">Menüü</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -50,11 +68,21 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - Soft - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+    <footer class="footer text-muted border-top box-shadow">
+		<div class="container text-center">
+			<div class="py-2">
+				📍 <a class ="link-dark" href="https://maps.app.goo.gl/rEzTsv8DpvnHoH7cA" target="_blank">123 Random Place</a>
+			</div>
+			<div class="py-2">
+				📞 +123 1234-5678 |
+                ✉ <a class="link-dark"  href="mailto:info@kindergarten.com">info@kindergarten.com</a>
+			</div>
+			<div class="py-2">
+				&copy; 2025 - Kindergarten |
+                <a class ="link-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
+			</div>
+		</div>
+	</footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

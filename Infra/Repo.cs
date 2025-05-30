@@ -11,21 +11,37 @@ public sealed class MovieRolesRepo(DbContext db)
     : Repo<MovieRole, MovieRoleData>(db, d => new(d)), IMovieRolesRepo { }
 public sealed class GroupsRepo(DbContext db)
     : Repo<Group, GroupData>(db, d => new(d)), IGroupsRepo { }
+public sealed class FoodAllergiesRepo(DbContext db)
+    : Repo<FoodAllergies, FoodAllergiesData>(db, d => new(d)), IFoodAllergiesRepo { }
 public sealed class TestingRepo(DbContext db)
     : Repo<Testing, TestingData>(db, d => new(d)), ITestingRepo { }
-
+public sealed class MenusRepo(DbContext db)
+    : Repo<Menu, MenuData>(db, d => new(d)), IMenusRepo { }
+public sealed class RegistrationRepo(DbContext db)
+    : Repo<Registration, RegistrationData>(db, d => new(d)), IRegistrationsRepo {}
+public sealed class AllCategoriesRepo(DbContext db)
+    : Repo<AllCategories, AllCategoriesData>(db, d => new(d)), IAllCategoriesRepo { }
+public sealed class AllStaffRepo(DbContext db)
+    : Repo<AllStaff, AllStaffData>(db, d => new(d)), IAllStaffRepo { }
+public sealed class ChildrenAndRepRepo(DbContext db)
+: Repo<ChildrenAndRep, ChildrenAndRepData>(db, d => new(d)), IChildrenAndRepRepo { }
+public sealed class ChildrenRepo(DbContext db)
+: Repo<Children, ChildrenData>(db, d => new(d)), IChildrenRepo { }
+public sealed class RepresentativesRepo(DbContext db)
+: Repo<Representative, RepresentativeData>(db, d => new(d)), IRepresentativesRepo { }
 public class Repo<TObject, TData>(DbContext c, Func<TData?, TObject> f)
     : IRepo<TObject> where TObject : Entity<TData> where TData : EntityData<TData> {
     private readonly DbContext db = c;
     private readonly DbSet<TData> set = c.Set<TData>();
     private static bool isAsc(string s) => !s.EndsWith("_desc");
     private static string propName(string s) => s.Replace("_desc", "");
+    private ParsingConfig config = new ParsingConfig { AllowEqualsAndToStringMethodsOnObject = true };
     private IQueryable<TData> ordered(string? orderBy = null, string? filter = null)
         => (orderBy is null) ? filtered(filter) : isAsc(orderBy)
             ? filtered(filter).OrderBy(propName(orderBy))
             : filtered(filter).OrderBy(propName(orderBy) + " descending");
     private IQueryable<TData> filtered(string? filter = null)
-        => (filter is null) ? set : set.Where(whereExpr(), filter);
+        => (filter is null) ? set : set.Where(config, whereExpr(), filter);
     private IQueryable<TData> filtered(string propertyName, int idValue)
         => set.Where(whereExpr(propertyName), idValue);
     private string whereExpr(string propertyName) {

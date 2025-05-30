@@ -1,0 +1,16 @@
+﻿@using Mvc.Core.Editors
+@model IEnumerable<Mvc.Facade.AllStaffView>
+
+@{
+    Layout = "_Index";
+
+    var propsToShow = new[] 
+    {
+        nameof(Mvc.Facade.AllStaffView.Name),
+        nameof(Mvc.Facade.AllStaffView.Surname),
+        nameof(Mvc.Facade.AllStaffView.IDNumber),
+        nameof(Mvc.Facade.AllStaffView.Position)
+    };
+}
+
+@Html.ShowTable(Model, propsToShow)

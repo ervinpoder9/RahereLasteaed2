@@ -1,5 +1,4 @@
 ﻿using Mvc.Core;
-using System;
 using Mvc.Data;
 
 namespace Mvc.Domain;

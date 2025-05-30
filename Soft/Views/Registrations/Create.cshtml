@@ -1,0 +1,9 @@
+﻿@model Mvc.Facade.RegistrationView
+
+@{
+    ViewData["Title"] = "Registration";
+    ViewData["Action"] = "Create";
+    Layout = "_Create";
+}
+
+@{ await Html.RenderPartialAsync("_EditRegistration", Model);}

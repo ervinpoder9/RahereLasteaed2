@@ -2,6 +2,7 @@
 using System.Reflection;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Mvc.Core.Helpers;
 
 namespace Mvc.Core.Editors;
 
@@ -37,6 +38,7 @@ public static class HtmlShowTable {
     private static TagBuilder createTable() {
         var t = tblTag;
         t.AddCssClass("table");
+        t.AddCssClass("nice-table");
         return t;
     }
     private static TagBuilder tblTag => new("table");
@@ -44,16 +46,21 @@ public static class HtmlShowTable {
         this IHtmlHelper<IEnumerable<TModel>> h, PropertyInfo[] properties) {
         var header = tblHdrTag;
         var row = tblRowTag;
+        bool disableSorting = typeof(TModel).Name == "ChildrenAndRepView"; // Lisasin juurde
         if (isRelated)
             row.AddCssClass("table-secondary");
         foreach (var p in properties) {
             var col = tblColTag;
             var name = displayNameFor(p);
-            name = h.updateDisplayName(name, p.Name);
-            var sortOrder = h.updateSortOrder(p.Name);
-            var link = $"<a href=\"?pageIdx=0&orderBy={sortOrder}&filter={h.ViewBag.Filter}\">{name}</a>";
-            col.InnerHtml.AppendHtml(isRelated ? name : link);
-            row.InnerHtml.AppendHtml(col);
+            if (disableSorting) {
+                col.InnerHtml.AppendHtml(name);
+            } else {
+                name = h.updateDisplayName(name, p.Name);
+                var sortOrder = h.updateSortOrder(p.Name);
+                var link = $"<a class=\"link-white\" href=\"?pageIdx=0&orderBy={sortOrder}&filter={h.ViewBag.Filter}\">{name}</a>";
+                col.InnerHtml.AppendHtml(isRelated ? name : link);
+                row.InnerHtml.AppendHtml(col);
+            }
         }
         if (!isRelated)
             row.InnerHtml.AppendHtml(tblColTag);
@@ -79,7 +86,7 @@ public static class HtmlShowTable {
     }
     private static TagBuilder tblHdrTag => new("thead");
     private static TagBuilder tblRowTag => new("tr");
-    private static TagBuilder tblColTag => new("td");
+    private static TagBuilder tblColTag => new("th");
     private static string displayNameFor(PropertyInfo p)
         => p.GetCustomAttribute<DisplayAttribute>()?.Name ?? p.Name;
     private static IHtmlContent createBody<TModel>(
@@ -110,6 +117,9 @@ public static class HtmlShowTable {
         var dt = v as DateTime?;
         if (dt != null)
             return new HtmlString(dt?.ToShortDateString() ?? "");
+        var e = v as Enum;
+        if (e != null)
+            return new HtmlString(e.GetDescription());
         return new HtmlString(v?.ToString() ?? "");
     }
     private static void addHrefs<TModel>(
@@ -117,6 +127,7 @@ public static class HtmlShowTable {
         , bool hasSelect) {
         var id = getId<TModel>(item);
         var td = tblDataTag;
+        td.AddCssClass("separator");
         var sel = h.hrefSel(id);
         var ed = h.hrefEd(id);
         var det = h.hrefDet(id);
@@ -135,11 +146,11 @@ public static class HtmlShowTable {
     private static int getId<TModel>(object? item)
         => typeof(TModel).GetProperty("Id")?.GetValue(item) as int? ?? 0;
     private static IHtmlContent hrefEd<TModel>(this IHtmlHelper<IEnumerable<TModel>> h, int i)
-        => h.ActionLink("Edit", "Edit", new { id = i });
+        => h.ActionLink("Edit", "Edit", new { id = i }, new { @class = "link-dark" });
     private static IHtmlContent hrefDet<TModel>(this IHtmlHelper<IEnumerable<TModel>> h, int i)
-        => h.ActionLink("Details", "Details", new { id = i });
+        => h.ActionLink("Details", "Details", new { id = i }, new { @class = "link-dark" });
     private static IHtmlContent hrefDel<TModel>(this IHtmlHelper<IEnumerable<TModel>> h, int i)
-        => h.ActionLink("Delete", "Delete", new { id = i });
+        => h.ActionLink("Delete", "Delete", new { id = i }, new { @class = "link-dark" });
     #endregion    
     private static IHtmlContent hrefSel<TModel>(this IHtmlHelper<IEnumerable<TModel>> h, int i)
         => h.ActionLink("Select", "Index", new {
@@ -147,6 +158,6 @@ public static class HtmlShowTable {
             pageIdx = h.ViewBag.PageIdx,
             orderBy = h.ViewBag.OrderBy,
             filter = h.ViewBag.Filter
-        });
+        }, new { @class = "link-dark" });
 }
 

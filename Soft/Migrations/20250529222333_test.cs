@@ -6,11 +6,46 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Mvc.Soft.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class test : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "AllCategories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AllCategories", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AllStaff",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    Position = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Education = table.Column<int>(type: "int", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IDNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Mobile = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AdditionalInfo = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AllStaff", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -51,17 +86,88 @@ namespace Mvc.Soft.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Children",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    GroupId = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IDNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Mobile = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AdditionalInfo = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Children", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ChildrenAndRep",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ChildId = table.Column<int>(type: "int", nullable: false),
+                    RepresentativeId = table.Column<int>(type: "int", nullable: false),
+                    RightOfRepresentation = table.Column<int>(type: "int", nullable: false),
+                    AdditionalInfo = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ChildrenAndRep", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FoodAllergies",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AllergyName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Reaction = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Antidote = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FoodAllergies", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Groups",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AmountOfChildren = table.Column<int>(type: "int", nullable: false)
+                    Capacity = table.Column<int>(type: "int", nullable: false),
+                    PrimaryTeacher = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AssistantTeacher = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RoomNumber = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Groups", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Menus",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Breakfast = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Lunch = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Snack = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Notes = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Menus", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -96,6 +202,45 @@ namespace Mvc.Soft.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Movies", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Registrations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RegistrationNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RegistrationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    GroupNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Price = table.Column<double>(type: "float", nullable: true),
+                    ChildName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GuardianName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Registrations", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Representative",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IDNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Mobile = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AdditionalInfo = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Representative", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -290,6 +435,12 @@ namespace Mvc.Soft.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "AllCategories");
+
+            migrationBuilder.DropTable(
+                name: "AllStaff");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
             migrationBuilder.DropTable(
@@ -305,13 +456,31 @@ namespace Mvc.Soft.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Children");
+
+            migrationBuilder.DropTable(
+                name: "ChildrenAndRep");
+
+            migrationBuilder.DropTable(
+                name: "FoodAllergies");
+
+            migrationBuilder.DropTable(
                 name: "Groups");
+
+            migrationBuilder.DropTable(
+                name: "Menus");
 
             migrationBuilder.DropTable(
                 name: "MovieRoles");
 
             migrationBuilder.DropTable(
                 name: "Movies");
+
+            migrationBuilder.DropTable(
+                name: "Registrations");
+
+            migrationBuilder.DropTable(
+                name: "Representative");
 
             migrationBuilder.DropTable(
                 name: "Tests");

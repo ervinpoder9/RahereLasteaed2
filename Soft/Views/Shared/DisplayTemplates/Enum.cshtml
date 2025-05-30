@@ -1,0 +1,9 @@
+﻿@using Mvc.Core.Helpers
+
+@model Enum
+
+@{
+    var description = Model?.GetDescription() ?? Model?.ToString() ?? "";
+}
+
+<span>@description</span>

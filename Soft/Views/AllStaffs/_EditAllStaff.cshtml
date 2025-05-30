@@ -1,0 +1,22 @@
+﻿@using Mvc.Core.Editors
+@using Mvc.Core
+@using Mvc.Domain
+@model Mvc.Facade.AllStaffView
+
+@{
+    var categories = await Services.Get<IAllCategoriesRepo>()?.GetAsync()! ?? [];
+    SelectList categoryList = new SelectList(categories, "Id", "CategoryName", Model.CategoryId);
+}
+
+@Html.SelectFor(x => x.CategoryId, categoryList)
+
+
+@Html.InputFor(x => x.Name)
+@Html.InputFor(x => x.Surname)
+@Html.InputFor(x => x.IDNumber)
+@Html.InputFor(x => x.Address)
+@Html.InputFor(x => x.Mobile)
+@Html.InputFor(x => x.Email)
+@Html.InputFor(x => x.Position)
+@Html.InputForEnum(x => x.Education)
+@Html.InputFor(x => x.AdditionalInfo)
