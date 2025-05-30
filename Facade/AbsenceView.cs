@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace Mvc.Facade;
 
-[DisplayName("Puudumine")]
+[DisplayName("Absences")]
 public sealed class AbsenceView : EntityView {
 
 }
