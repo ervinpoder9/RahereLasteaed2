@@ -27,8 +27,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Infra\Infra.csproj" />
     <InternalsVisibleTo Include="Mvc.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Infra\Infra.csproj" />
   </ItemGroup>
 
 </Project>

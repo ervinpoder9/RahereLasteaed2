@@ -17,6 +17,7 @@ public class ApplicationDbContext : IdentityDbContext {
     public DbSet<ChildrenData> Children { get; set; } = default!;
     public DbSet<RepresentativeData> Representative { get; set; } = default!;
     public DbSet<ChildrenAndRepData> ChildrenAndRep { get; set; } = default!;
+    public DbSet<AbsenceData> Absence { get; set; } = default!;
 
     public DbSet<MenuData> Menus { get; set; } = default!;
 }

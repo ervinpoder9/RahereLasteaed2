@@ -23,8 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Facade\Facade.csproj" />
     <InternalsVisibleTo Include="Mvc.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Facade\Facade.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,17 @@
+﻿@using Mvc.Core
+@using Mvc.Core.Editors
+@using Mvc.Domain
+@model Mvc.Facade.AbsenceView
+
+
+@{
+	var groups = await Services.Get<IGroupsRepo>()?.GetAsync()! ?? [];
+	var persons = await Services.Get<IChildrenRepo>()?.GetAsync()! ?? [];
+	var selectGroups = new SelectList(groups, "Id", "Name", Model.GroupId);
+	var selectPersons = new SelectList(persons, "Id", "Name", Model.ChildId);
+}
+
+@Html.InputFor(x => x.AbsenceDate)
+@Html.InputFor(x => x.SubmissionDate)
+@Html.SelectFor(x => x.ChildId, selectPersons)
+@Html.SelectFor(x => x.GroupId, selectGroups)

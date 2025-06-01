@@ -1,0 +1,11 @@
+﻿@using Mvc.Core
+@using Mvc.Core.Editors
+@using Mvc.Domain
+@using Mvc.Facade
+@model IEnumerable<Mvc.Facade.AbsenceView>
+
+@{
+	Layout = "_Index";
+}
+
+@Html.ShowTable(Model, true)
