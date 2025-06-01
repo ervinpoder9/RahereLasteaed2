@@ -8,10 +8,8 @@ namespace Mvc.Facade;
 
 [DisplayName("Absence")]
 public sealed class AbsenceView : EntityView {
-    internal const string absenceDate = "Absence Date";
-    internal const string submissionDate = "Submission Date";
-    [Display(Name = absenceDate), DataType(DataType.Date), FutureDate(ErrorMessage = "Absence can only be marked for future dates.")] public DateTime AbsenceDate { get; set; }
-    [Display(Name = submissionDate), DataType(DataType.DateTime)] public DateTime SubmissionDate { get; set; }
+    [Display(Name = "Absence Date"), DataType(DataType.Date), FutureDate(ErrorMessage = "Absence can only be marked for future dates.")] public DateTime AbsenceDate { get; set; }
+    [Display(Name = "Submitted At"), DataType(DataType.DateTime)] public DateTime CreatedAt { get; private set; }
     [Display(Name = "Group")] public int GroupId { get; set; }
     [Display(Name = "Child")] public int ChildId { get; set; }
     [Display(Name = "Group")] public string? Group { get; set; }
