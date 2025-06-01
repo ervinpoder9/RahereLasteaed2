@@ -15,6 +15,5 @@ public class Absence(AbsenceData? d) : Entity<AbsenceData>(d) {
         child = await Services.Get<IChildrenRepo>()?.GetAsync(ChildId)!;
         group = await Services.Get<IGroupsRepo>()?.GetAsync(GroupId)!;
     }
-    public DateTime? SubmissionDate => data?.SubmissionDate;
     public DateTime? AbsenceDate => data?.AbsenceDate;
 }

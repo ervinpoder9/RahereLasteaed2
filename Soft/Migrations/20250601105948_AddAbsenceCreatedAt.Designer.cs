@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mvc.Soft.Data;
 
@@ -11,9 +12,11 @@ using Mvc.Soft.Data;
 namespace Mvc.Soft.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250601105948_AddAbsenceCreatedAt")]
+    partial class AddAbsenceCreatedAt
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -369,25 +372,6 @@ namespace Mvc.Soft.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Children");
-                });
-
-            modelBuilder.Entity("Mvc.Data.ChildrenFoodAllergiesData", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ChildrenId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("FoodAllergyId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ChildrenFoodAllergies");
                 });
 
             modelBuilder.Entity("Mvc.Data.FoodAllergiesData", b =>
