@@ -12,6 +12,7 @@ public interface IAllCategoriesRepo : IRepo<AllCategories>;
 public interface IChildrenAndRepRepo : IRepo<ChildrenAndRep>;
 public interface IChildrenRepo : IRepo<Children>;
 public interface IRepresentativesRepo : IRepo<Representative>;
+public interface IChildrenFoodAllergiesRepo : IRepo<ChildrenFoodAllergies>;
 public interface IRepo<TObject> {
     public Task<int> PageCount(byte pageSize, string? filter);
     public Task<IEnumerable<TObject>> GetAsync(int pageIdx, byte pageSize

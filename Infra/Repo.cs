@@ -13,6 +13,8 @@ public sealed class GroupsRepo(DbContext db)
     : Repo<Group, GroupData>(db, d => new(d)), IGroupsRepo { }
 public sealed class FoodAllergiesRepo(DbContext db)
     : Repo<FoodAllergies, FoodAllergiesData>(db, d => new(d)), IFoodAllergiesRepo { }
+public sealed class ChildrenFoodAllergiesRepo(DbContext db)
+    : Repo<ChildrenFoodAllergies, ChildrenFoodAllergiesData>(db, d => new(d)), IChildrenFoodAllergiesRepo { }
 public sealed class TestingRepo(DbContext db)
     : Repo<Testing, TestingData>(db, d => new(d)), ITestingRepo { }
 public sealed class MenusRepo(DbContext db)

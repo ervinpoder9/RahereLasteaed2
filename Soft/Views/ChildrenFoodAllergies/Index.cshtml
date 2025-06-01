@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Mvc.Facade.ChildrenFoodAllergiesView>
+@using Mvc.Core.Editors
+
+@{
+	Layout = "_Index";
+
+	var propsToShow = new[]
+	{
+		nameof(Mvc.Facade.ChildrenFoodAllergiesView.Children),
+		nameof(Mvc.Facade.ChildrenFoodAllergiesView.FoodAllergy)
+	};
+}
+
+@Html.ShowTable(Model, propsToShow)

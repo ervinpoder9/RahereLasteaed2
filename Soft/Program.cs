@@ -30,6 +30,7 @@ internal class Program {
         builder.Services.AddTransient<IChildrenAndRepRepo, ChildrenAndRepRepo>();
         builder.Services.AddTransient<IChildrenRepo, ChildrenRepo>();
         builder.Services.AddTransient<IRepresentativesRepo, RepresentativesRepo>();
+        builder.Services.AddTransient<IChildrenFoodAllergiesRepo, ChildrenFoodAllergiesRepo>();
 
         Services.init(builder.Services);
         var app = builder.Build();

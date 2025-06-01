@@ -1,0 +1,29 @@
+﻿@using Mvc.Core
+@using Mvc.Core.Editors
+@using Mvc.Domain
+@model Mvc.Facade.ChildrenFoodAllergiesView
+
+@{
+	var child = await Services.Get<IChildrenRepo>()?.GetAsync()! ?? [];
+	var foodAllergies = await Services.Get<IFoodAllergiesRepo>()?.GetAsync()! ?? [];
+	var childList = new SelectList(
+		child?.Where(child => child?.Name != null && child.Surname != null)
+			.Select(child => new { child.Id, FullName = $"{child.Name} {child.Surname}" })
+		?? [],
+		"Id",
+		"FullName",
+		Model.ChildrenId
+	);
+	var allergyList = new SelectList(
+		foodAllergies?.Where(allergy => allergy?.AllergyName != null)
+			.Select(allergy => new { allergy.Id, AName = allergy.AllergyName })
+		?? [],
+		"Id",
+		"AName",
+		Model.FoodAllergyId
+	);
+}
+
+
+@Html.SelectFor(model => model.ChildrenId, childList)
+@Html.SelectFor(model => model.FoodAllergyId, allergyList)

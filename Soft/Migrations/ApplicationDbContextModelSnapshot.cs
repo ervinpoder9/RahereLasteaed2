@@ -370,6 +370,25 @@ namespace Mvc.Soft.Migrations
                     b.ToTable("Children");
                 });
 
+            modelBuilder.Entity("Mvc.Data.ChildrenFoodAllergiesData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ChildrenId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FoodAllergyId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ChildrenFoodAllergies");
+                });
+
             modelBuilder.Entity("Mvc.Data.FoodAllergiesData", b =>
                 {
                     b.Property<int>("Id")

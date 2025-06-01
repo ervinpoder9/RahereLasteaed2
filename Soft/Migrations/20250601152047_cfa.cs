@@ -6,11 +6,27 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Mvc.Soft.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class cfa : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Absence",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    GroupId = table.Column<int>(type: "int", nullable: false),
+                    ChildId = table.Column<int>(type: "int", nullable: false),
+                    AbsenceDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    SubmissionDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Absence", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "AllCategories",
                 columns: table => new
@@ -119,6 +135,20 @@ namespace Mvc.Soft.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ChildrenAndRep", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ChildrenFoodAllergies",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ChildrenId = table.Column<int>(type: "int", nullable: false),
+                    FoodAllergyId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ChildrenFoodAllergies", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -435,6 +465,9 @@ namespace Mvc.Soft.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Absence");
+
+            migrationBuilder.DropTable(
                 name: "AllCategories");
 
             migrationBuilder.DropTable(
@@ -460,6 +493,9 @@ namespace Mvc.Soft.Migrations
 
             migrationBuilder.DropTable(
                 name: "ChildrenAndRep");
+
+            migrationBuilder.DropTable(
+                name: "ChildrenFoodAllergies");
 
             migrationBuilder.DropTable(
                 name: "FoodAllergies");

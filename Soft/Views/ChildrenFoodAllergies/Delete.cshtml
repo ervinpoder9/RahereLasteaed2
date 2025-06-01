@@ -1,0 +1,11 @@
+﻿@model Mvc.Facade.ChildrenFoodAllergiesView
+
+@{
+	ViewData["Title"] = "Child Allergies";
+	ViewData["Action"] = "Delete";
+	ViewData["ItemId"] = Model.Id;
+	Layout = "_Delete";
+}
+
+
+@{await Html.RenderPartialAsync("_ShowChildrenFoodAllergies", Model); }

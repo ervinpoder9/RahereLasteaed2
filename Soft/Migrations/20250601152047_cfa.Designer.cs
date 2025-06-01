@@ -12,8 +12,8 @@ using Mvc.Soft.Data;
 namespace Mvc.Soft.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250530085444_initial")]
-    partial class initial
+    [Migration("20250601152047_cfa")]
+    partial class cfa
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -227,6 +227,31 @@ namespace Mvc.Soft.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Mvc.Data.AbsenceData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("AbsenceDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ChildId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("SubmissionDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Absence");
+                });
+
             modelBuilder.Entity("Mvc.Data.AllCategoriesData", b =>
                 {
                     b.Property<int>("Id")
@@ -346,6 +371,25 @@ namespace Mvc.Soft.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Children");
+                });
+
+            modelBuilder.Entity("Mvc.Data.ChildrenFoodAllergiesData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ChildrenId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FoodAllergyId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ChildrenFoodAllergies");
                 });
 
             modelBuilder.Entity("Mvc.Data.FoodAllergiesData", b =>
