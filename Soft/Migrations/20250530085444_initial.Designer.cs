@@ -12,8 +12,8 @@ using Mvc.Soft.Data;
 namespace Mvc.Soft.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250529222333_test")]
-    partial class test
+    [Migration("20250530085444_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
