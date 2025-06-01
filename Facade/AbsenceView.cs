@@ -9,7 +9,7 @@ namespace Mvc.Facade;
 [DisplayName("Absence")]
 public sealed class AbsenceView : EntityView {
     [Display(Name = "Absence Date"), DataType(DataType.Date), FutureDate(ErrorMessage = "Absence can only be marked for future dates.")] public DateTime AbsenceDate { get; set; }
-    [Display(Name = "Submitted At"), DataType(DataType.DateTime)] public DateTime CreatedAt { get; private set; }
+    [Display(Name = "Submitted At"), DataType(DataType.DateTime)] public DateTime CreatedAt { get; init; }
     [Display(Name = "Group")] public int GroupId { get; set; }
     [Display(Name = "Child")] public int ChildId { get; set; }
     [Display(Name = "Group")] public string? Group { get; set; }
